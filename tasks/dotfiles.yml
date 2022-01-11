@@ -1,2 +1,11 @@
-# TODO
-# - name: Setup dotfiles
+- name: Clone dotfiles
+  ansible.builtin.git:
+    repo: 'git@github.com:Hess0r/dotfiles.git'
+    dest: "{{ lookup('env', 'HOME') }}/dotfiles"
+  tags:
+    - dotfiles
+
+- name: Run dotfiles setup
+  shell: cd $HOME/dotfiles && ./setup.sh
+  tags:
+    - dotfiles
