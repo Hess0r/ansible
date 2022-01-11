@@ -4,6 +4,7 @@
     repo: ppa:neovim-ppa/stable
   tags:
     - install
+    - neovim
 
 - name: Install neovim
   become: yes
@@ -11,3 +12,4 @@
     name: 'neovim'
   tags:
     - install
+    - neovim

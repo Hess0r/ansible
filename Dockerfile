@@ -20,6 +20,6 @@ USER gsinka
 WORKDIR /home/gsinka
 
 FROM gsinka
-ARG TAGS
+ENV TAGS=""
 COPY --chown=gsinka . .
 CMD ["sh", "-c", "ansible-playbook $TAGS local.yml"]
