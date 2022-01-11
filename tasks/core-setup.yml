@@ -1,0 +1,52 @@
+- name: Install core packages 1
+  become: yes
+  apt:
+    name: ["build-essential", "software-properties-common", "unzip", "libtool", "libtool-bin", "gettext", "apt-utils"]
+  tags:
+    - install
+    - core
+
+- name: Install core packages 2
+  become: yes
+  apt:
+    name: ["curl", "htop", "lsof", "ninja-build", "moreutils"]
+  tags:
+    - install
+    - core
+
+- name: Install core packages 3
+  become: yes
+  apt:
+    name: ["direnv", "fzf", "fd-find", "jq", "tree", "tmux"]
+  tags:
+    - install
+    - core
+
+- name: Install core packages 4
+  become: yes
+  apt:
+    name: ["bat", "ripgrep"]
+    dpkg_options: "force-overwrite"
+  tags:
+    - install
+    - core
+
+- name: Create ~/.local/bin
+  file:
+    path: "{{ lookup('env', 'HOME') }}/.local/bin"
+    state: directory
+  tags:
+    - install
+    - core
+
+- name: Create symlinks for commands (bat, fd)
+  file:
+    src: "/usr/bin/{{ item.src }}"
+    dest: "{{ lookup('env', 'HOME') }}/.local/bin/{{ item.dest }}"
+    state: link
+  with_items:
+    - { src: 'batcat', dest: 'bat' }
+    - { src: 'fdfind', dest: 'fd' }
+  tags:
+    - install
+    - core

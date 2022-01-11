@@ -1,0 +1,13 @@
+- name: Add Neovim PPA
+  become: yes
+  ansible.builtin.apt_repository:
+    repo: ppa:neovim-ppa/stable
+  tags:
+    - install
+
+- name: Install neovim
+  become: yes
+  apt:
+    name: 'neovim'
+  tags:
+    - install

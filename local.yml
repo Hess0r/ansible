@@ -1,0 +1,49 @@
+- hosts: localhost
+  vars:
+    source_key: "./.ssh/id_rsa"
+    dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa"
+  pre_tasks:
+    - name: Update apt
+      become: yes
+      apt:
+        force_apt_get: yes
+        update_cache: yes
+        state: present
+      tags:
+        - install
+        - core
+  tasks:
+    - name: SSH key setup
+      include_tasks: tasks/ssh.yml
+      tags:
+        - install
+        - ssh
+        - dotfiles
+    - name: Core Setup
+      include_tasks: tasks/core-setup.yml
+      tags:
+        - install
+        - core
+    - name: Install Neovim
+      include_tasks: tasks/neovim.yml
+      tags:
+        - install
+        - neovim
+    - name: Install Starship Prompt
+      include_tasks: tasks/starship.yml
+      tags:
+        - install
+        - starship
+    - name: Install Node Version Manager
+      include_tasks: tasks/nvm.yml
+      tags:
+        - install
+        - node
+    - name: Install PHP
+      include_tasks: tasks/php.yml
+      tags:
+        - php
+    - name: Install Docker
+      include_tasks: tasks/docker.yml
+      tags:
+        - docker
