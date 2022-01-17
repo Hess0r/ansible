@@ -1,0 +1,27 @@
+- name: Install system dependencies
+  become: yes
+  apt:
+    name: ["apt-transport-https", "ca-certificates", "curl"]
+  tags:
+    - kubectl
+
+- name: Download k8s keyring
+  become: yes
+  shell: "curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg"
+  tags:
+    - kubectl
+
+- name: Add k8s apt repository
+  become: yes
+  apt_repository:
+    repo: "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main"
+    state: present
+  tags:
+    - kubectl
+
+- name: Install kubectl
+  become: yes
+  apt:
+    name: kubectl
+  tags:
+    - kubectl

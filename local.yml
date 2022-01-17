@@ -42,3 +42,7 @@
       include_tasks: tasks/gh.yml
       tags:
         - gh
+    - name: Install kubectl
+      include_tasks: tasks/kubectl.yml
+      tags:
+        - kubectl
