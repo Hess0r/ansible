@@ -17,9 +17,9 @@ RUN adduser gsinka sudo
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> \
     /etc/sudoers
 USER gsinka
-WORKDIR /home/gsinka
+WORKDIR /home/gsinka/ansible
 
 FROM gsinka
-ENV TAGS=""
+ENV TAGS=all
 COPY --chown=gsinka . .
-CMD ["sh", "-c", "ansible-playbook $TAGS local.yml"]
+CMD ["sh", "-c", "ansible-playbook --tags $TAGS local.yml"]
