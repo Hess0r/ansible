@@ -46,3 +46,7 @@
       include_tasks: tasks/kubectl.yml
       tags:
         - kubectl
+    - name: Install lazydocker/lazygit
+      include_tasks: tasks/lazystuff.yml
+      tags:
+        - lazystuff
