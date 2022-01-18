@@ -49,4 +49,5 @@
     - name: Install lazydocker/lazygit
       include_tasks: tasks/lazystuff.yml
       tags:
-        - lazystuff
+        - lazygit
+        - lazydocker

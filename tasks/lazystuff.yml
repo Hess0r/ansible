@@ -1,18 +1,18 @@
 - name: Install lazydocker
   shell: "curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash"
   tags:
-    - lazystuff
+    - lazydocker
 
 - name: Add lazygit apt repository
   become: yes
   ansible.builtin.apt_repository:
     repo: ppa:lazygit-team/release
   tags:
-    - lazystuff
+    - lazygit
 
 - name: Install lazygit
   become: yes
   apt:
     name: lazygit
   tags:
-    - lazystuff
+    - lazygit
