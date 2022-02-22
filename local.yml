@@ -51,3 +51,7 @@
       tags:
         - lazygit
         - lazydocker
+    - name: Install vscode
+      include_tasks: tasks/vscode.yml
+      tags:
+        - vscode

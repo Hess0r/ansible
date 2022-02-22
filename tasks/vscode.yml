@@ -1,0 +1,43 @@
+- name: Install system dependencies
+  become: yes
+  apt:
+    name: ["apt-transport-https", "ca-certificates", "curl", "software-properties-common", "gnupg"]
+  tags:
+    - vscode
+
+- name: Add apt key
+  become: yes
+  apt_key:
+    url: https://packages.microsoft.com/keys/microsoft.asc
+    state: present
+  tags:
+    - vscode
+
+- name: Add apt repository
+  become: yes
+  apt_repository:
+    repo: "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
+    state: present
+  tags:
+    - vscode
+
+- name: Install VSCode
+  become: yes
+  apt:
+    name: ["code"]
+  tags:
+    - vscode
+
+- name: Install VSCode extensions
+  shell:
+    cmd: >
+      code --install-extension
+      PKief.material-icon-theme
+      zhuangtongfa.material-theme
+      sleistner.vscode-fileutils
+      mhutchie.git-graph
+      ms-vscode-remote.remote-containers
+      esbenp.prettier-vscode
+      dbaeumer.vscode-eslint
+  tags:
+    - vscode
