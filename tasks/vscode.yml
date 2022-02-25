@@ -39,5 +39,9 @@
       ms-vscode-remote.remote-containers
       esbenp.prettier-vscode
       dbaeumer.vscode-eslint
+      ms-azuretools.vscode-docker
+      vscodevim.vim
+      wayou.vscode-todo-highlight
+      golang.Go
   tags:
     - vscode
