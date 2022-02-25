@@ -29,19 +29,18 @@
     - vscode
 
 - name: Install VSCode extensions
-  shell:
-    cmd: >
-      code --install-extension
-      PKief.material-icon-theme
-      zhuangtongfa.material-theme
-      sleistner.vscode-fileutils
-      mhutchie.git-graph
-      ms-vscode-remote.remote-containers
-      esbenp.prettier-vscode
-      dbaeumer.vscode-eslint
-      ms-azuretools.vscode-docker
-      vscodevim.vim
-      wayou.vscode-todo-highlight
-      golang.Go
+  shell: code --install-extension {{ item }}
+  with_items:
+    - PKief.material-icon-theme
+    - zhuangtongfa.material-theme
+    - sleistner.vscode-fileutils
+    - mhutchie.git-graph
+    - ms-vscode-remote.remote-containers
+    - esbenp.prettier-vscode
+    - dbaeumer.vscode-eslint
+    - ms-azuretools.vscode-docker
+    - vscodevim.vim
+    - wayou.vscode-todo-highlight
+    - golang.Go
   tags:
     - vscode
