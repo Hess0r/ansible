@@ -1,12 +1,19 @@
 - name: Install system dependencies
-  become: yes
+  become: true
   apt:
-    name: ["apt-transport-https", "ca-certificates", "curl", "software-properties-common", "gnupg"]
+    name:
+      [
+        "apt-transport-https",
+        "ca-certificates",
+        "curl",
+        "software-properties-common",
+        "gnupg",
+      ]
   tags:
     - vscode
 
 - name: Add apt key
-  become: yes
+  become: true
   apt_key:
     url: https://packages.microsoft.com/keys/microsoft.asc
     state: present
@@ -14,7 +21,7 @@
     - vscode
 
 - name: Add apt repository
-  become: yes
+  become: true
   apt_repository:
     repo: "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
     state: present
@@ -22,7 +29,7 @@
     - vscode
 
 - name: Install VSCode
-  become: yes
+  become: true
   apt:
     name: ["code"]
   tags:
@@ -41,7 +48,7 @@
     - PKief.material-icon-theme
     - sleistner.vscode-fileutils
     - vscodevim.vim
-    - wayou.vscode-todo-highlight
+    - Gruntfuggly.todo-tree
     - zhuangtongfa.material-theme
   tags:
     - vscode
