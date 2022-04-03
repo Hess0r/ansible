@@ -1,0 +1,32 @@
+- name: Install system dependencies
+  become: true
+  apt:
+    name: ["apt-transport-https", "ca-certificates", "curl", "software-properties-common", "gnupg"]
+
+- name: Add Docker GPG key
+  become: true
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+
+- name: Add Docker apt repository
+  become: true
+  apt_repository:
+    repo: "deb https://download.docker.com/linux/ubuntu {{ ansible_distribution_release | lower }} stable"
+    state: present
+
+- name: Install Docker
+  become: true
+  apt:
+    name: ["docker-ce", "docker-ce-cli", "containerd.io"]
+
+- name: Create Docker plugin directory
+  file:
+    path: "{{ lookup('env', 'HOME') }}/.docker/cli-plugins"
+    state: directory
+
+- name: Install Docker Compose V2
+  get_url:
+    url: https://github.com/docker/compose/releases/download/v2.0.1/docker-compose-linux-x86_64
+    dest: "{{ lookup('env', 'HOME') }}/.docker/cli-plugins/docker-compose"
+    mode: "+x"
