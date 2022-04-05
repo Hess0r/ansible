@@ -1,6 +1,6 @@
 ---
-- name: Install htop
+- name: Install Pandoc
   become: true
   ansible.builtin.package:
-    name: htop
+    name: pandoc
     state: latest

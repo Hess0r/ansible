@@ -1,0 +1,18 @@
+---
+- name: Add k8s GPG key
+  become: true
+  apt_key:
+    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    state: present
+
+- name: Add k8s apt repository
+  become: true
+  apt_repository:
+    repo: "deb https://apt.kubernetes.io/ kubernetes-xenial main"
+    state: present
+
+- name: Install kubectl
+  become: true
+  ansible.builtin.package:
+    name: kubectl
+    state: latest

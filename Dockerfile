@@ -20,6 +20,5 @@ USER gsinka
 WORKDIR /home/gsinka/ansible
 
 FROM gsinka
-ENV TAGS=all
 COPY --chown=gsinka . .
-CMD ["sh", "-c", "ansible-playbook --tags $TAGS local.yml"]
+CMD ["sh", "-c", "ansible-playbook --diff main.yml"]

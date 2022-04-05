@@ -1,5 +1,6 @@
 ---
 - name: Install tmux
+  become: true
   ansible.builtin.package:
     name: tmux
-  become: true
+    state: latest

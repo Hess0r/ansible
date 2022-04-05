@@ -1,0 +1,6 @@
+---
+- name: Install Node Version Manager
+  shell: >
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+  args:
+    creates: "{{ ansible_user_dir }}/.nvm/nvm.sh"

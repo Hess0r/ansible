@@ -1,18 +1,23 @@
-- name: Add Github GPG Key
-  become: true
-  shell: "curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg"
+---
+# This only works for Debian based distibutions
+# - name: Get DEB architecture
+#   shell: dpkg --print-architecture
+#   register: deb_architecture
 
-# This only work for Debian based distibutions
-- name: Get DEB architecture
-  shell: dpkg --print-architecture
-  register: deb_architecture
+- name: Add Github GPG key
+  become: true
+  apt_key:
+    url: https://cli.github.com/packages/githubcli-archive-keyring.gpg
+    state: present
 
 - name: Add Github apt repository
   become: true
   apt_repository:
-    repo: "deb [arch={{ deb_architecture.stdout }} signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main"
+    # repo: "deb [arch={{ deb_architecture.stdout }}] https://cli.github.com/packages stable main"
+    repo: deb https://cli.github.com/packages stable main
 
 - name: Install Github CLI
   become: true
-  apt:
+  ansible.builtin.package:
     name: gh
+    state: latest

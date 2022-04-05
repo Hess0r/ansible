@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker container run --rm -e TAGS=$@ test-ansible
+docker container run --rm test-ansible

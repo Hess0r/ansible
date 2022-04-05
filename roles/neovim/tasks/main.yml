@@ -1,0 +1,52 @@
+---
+- name: Dependencies
+  become: true
+  ansible.builtin.package:
+    name:
+      - ninja-build
+      - gettext
+      - libtool
+      - libtool-bin
+      - autoconf
+      - automake
+      - cmake
+      - g++
+      - pkg-config
+      - unzip
+      - curl
+      - doxygen
+
+- name: Clone
+  ansible.builtin.git:
+    clone: yes
+    depth: 1
+    dest: "{{ ansible_user_dir }}/Repos/neovim"
+    force: yes
+    repo: https://github.com/neovim/neovim.git
+    single_branch: yes
+    update: yes
+    version: master
+  register: clone
+
+- name: Build
+  make:
+    chdir: "{{ ansible_user_dir }}/Repos/neovim"
+    params:
+      CMAKE_BUILD_TYPE: RelWithDebInfo
+  when: clone.changed
+
+- name: Install
+  become: true
+  make:
+    chdir: "{{ ansible_user_dir }}/Repos/neovim"
+    target: install
+  when: clone.changed
+
+- name: Remove build folder
+  become: true
+  ansible.builtin.file:
+    path: "{{ ansible_user_dir }}/Repos/neovim/build"
+    state: absent
+
+- name: Install vim-plug
+  shell: curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim

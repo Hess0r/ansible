@@ -1,3 +1,4 @@
+---
 - name: Install core packages
   become: true
   apt:
@@ -5,16 +6,16 @@
       - build-essential
       - software-properties-common
       - unzip
-      - libtool
-      - libtool-bin
-      - gettext
       - apt-utils
       - curl
       - lsof
-      - ninja-build
       - moreutils
       - direnv
       - fzf
       - fd-find
       - jq
       - tree
+      - gnupg
+      - apt-transport-https
+      - ca-certificates
+    state: latest

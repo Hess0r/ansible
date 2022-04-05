@@ -1,0 +1,8 @@
+---
+# This is the naive solution
+# It would be better if we installed it with the use of a version and an arichitecture variables from the tar directly
+- name: Install go
+  become: true
+  ansible.builtin.package:
+    name: golang
+    state: latest

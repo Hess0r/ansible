@@ -1,8 +1,4 @@
-- name: Install system dependencies
-  become: true
-  apt:
-    name: ["apt-transport-https", "ca-certificates", "curl", "software-properties-common", "gnupg"]
-
+---
 - name: Add Docker GPG key
   become: true
   apt_key:
@@ -17,8 +13,12 @@
 
 - name: Install Docker
   become: true
-  apt:
-    name: ["docker-ce", "docker-ce-cli", "containerd.io"]
+  ansible.builtin.package:
+    name: 
+      - "docker-ce"
+      - "docker-ce-cli"
+      - "containerd.io"
+    state: latest
 
 - name: Create Docker plugin directory
   file:

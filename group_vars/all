@@ -4,3 +4,9 @@ default_roles:
   - htop
   - tmux
   - gh
+  - kubectl
+  - neovim
+  - pandoc
+  - nvm
+  - starship
+  #- go

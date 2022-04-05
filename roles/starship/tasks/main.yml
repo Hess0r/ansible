@@ -1,0 +1,12 @@
+---
+- name: Get Starship installer
+  get_url:
+    url: https://starship.rs/install.sh
+    dest: /tmp/starship_install.sh
+    mode: '0755'
+
+- name: Install Starship
+  become: true
+  shell:
+    cmd: /tmp/starship_install.sh --yes
+    executable: '/bin/sh'
