@@ -10,3 +10,4 @@
   shell:
     cmd: /tmp/starship_install.sh --yes
     executable: '/bin/sh'
+    creates: /usr/local/bin/starship

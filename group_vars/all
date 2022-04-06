@@ -9,4 +9,4 @@ default_roles:
   - pandoc
   - nvm
   - starship
-  #- go
+  - go

@@ -1,0 +1,6 @@
+---
+go_architecture: 'linux-amd64'
+go_version: 1.18
+go_installer_checksum: 'e85278e98f57cdb150fe8409e6e5df5343ecb13cebf03a5d5ff12bd55a80264f'
+go_mirror: 'https://storage.googleapis.com/golang'
+go_install_dir: '/usr/local'

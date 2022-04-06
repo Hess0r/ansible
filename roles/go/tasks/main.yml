@@ -1,8 +1,20 @@
 ---
-# This is the naive solution
-# It would be better if we installed it with the use of a version and an arichitecture variables from the tar directly
 - name: Install go
   become: true
   ansible.builtin.package:
     name: golang
     state: latest
+
+# - name: Download go installer
+#   get_url:
+#     url: "{{ go_mirror }}/go{{ go_version }}.{{ go_architecture }}.tar.gz"
+#     dest: "/tmp"
+#     checksum: "sha256:{{go_installer_checksum }}"
+
+# - name: Extract archive
+#   become: true
+#   unarchive:
+#     src: "/tmp/go{{ go_version }}.{{ go_architecture }}.tar.gz"
+#     remote_src: yes
+#     dest: "{{ go_install_dir }}"
+#     creates: "{{ go_install_dir }}/go/bin"

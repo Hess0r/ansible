@@ -1,0 +1,25 @@
+---
+- name: Install PHP
+  become: true
+  ansible.builtin.package:
+    name: 
+      - php
+      - php-fileinfo
+      - php-mbstring
+      - php-bcmath
+      - php-cli
+      - php-common
+      - php-dom
+      - php-curl
+      - php-gd
+      - php-intl
+      - php-mbstring
+      - php-opcache
+      - php-xml
+    state: latest
+
+- name: Install Composer
+  become: true
+  ansible.builtin.package:
+    name: composer
+    state: latest
