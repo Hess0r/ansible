@@ -1,19 +1,30 @@
 ---
-- name: Clone
-  ansible.builtin.git:
-    clone: yes
-    depth: 1
-    dest: "{{ ansible_user_dir }}/Repos/lazygit"
-    force: yes
-    repo: https://github.com/jesseduffield/lazygit.git
-    single_branch: yes
-    update: yes
-    version: master
-  register: clone
+# Figure out a way to not run this all the time
+- name: Get latest version
+  uri:
+    url: https://github.com/jesseduffield/lazygit/releases/latest
+    return_content: yes
+    body_format: json
+    headers:
+      Accept: application/json
+  register: version
 
-- name: Install
+- name: Download archive
+  vars:
+    release_version: "{{ version.json.tag_name }}"
+    release_file_name: "lazygit_{{ version.json.tag_name | replace('v','')}}_Linux_{{ ansible_architecture}}.tar.gz"
+  get_url:
+    url: "https://github.com/jesseduffield/lazygit/releases/download/{{ release_version }}/{{ release_file_name }}"
+    dest: "/tmp/lazygit.tar.gz"
+
+- name: Create ~/.local directory if does not exist yet
+  file:
+    path: "{{ ansible_user_dir}}/.local/bin"
+    state: directory
+
+- name: Extract archive
   become: true
-  command: "go install"
-  args:
-    chdir: "{{ ansible_user_dir }}/Repos/lazygit"
-  when: clone.changed
+  unarchive:
+    src: "/tmp/lazygit.tar.gz"
+    remote_src: yes
+    dest: "{{ ansible_user_dir}}/.local/bin"

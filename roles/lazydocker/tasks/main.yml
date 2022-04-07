@@ -1,0 +1,30 @@
+---
+# Figure out a way to not run this all the time
+- name: Get latest version
+  uri:
+    url: https://github.com/jesseduffield/lazydocker/releases/latest
+    return_content: yes
+    body_format: json
+    headers:
+      Accept: application/json
+  register: version
+
+- name: Download archive
+  vars:
+    release_version: "{{ version.json.tag_name }}"
+    release_file_name: "lazydocker_{{ version.json.tag_name | replace('v','')}}_Linux_{{ ansible_architecture}}.tar.gz"
+  get_url:
+    url: "https://github.com/jesseduffield/lazydocker/releases/download/{{ release_version }}/{{ release_file_name }}"
+    dest: "/tmp/lazydocker.tar.gz"
+
+- name: Create ~/.local directory if does not exist yet
+  file:
+    path: "{{ ansible_user_dir}}/.local/bin"
+    state: directory
+
+- name: Extract archive
+  become: true
+  unarchive:
+    src: "/tmp/lazydocker.tar.gz"
+    remote_src: yes
+    dest: "{{ ansible_user_dir}}/.local/bin"
