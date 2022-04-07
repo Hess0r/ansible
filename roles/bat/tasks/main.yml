@@ -1,0 +1,11 @@
+---
+- name: Install bat
+  ansible.builtin.package:
+    name: bat
+    state: latest
+
+- name: Create symlink
+  file:
+    src: "/usr/bin/batcat"
+    dest: "{{ ansible_user_dir }}/.local/bin/bat"
+    state: link

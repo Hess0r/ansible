@@ -12,7 +12,6 @@
       - moreutils
       - direnv
       - fzf
-      - fd-find
       - jq
       - tree
       - gnupg

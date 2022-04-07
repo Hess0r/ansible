@@ -1,0 +1,12 @@
+---
+- name: Install fd-find
+  ansible.builtin.package:
+    name: fd-find
+    state: latest
+
+- name: Create symlink
+  file:
+    src: "/usr/bin/fdfind"
+    dest: "{{ ansible_user_dir }}/.local/bin/fd"
+    state: link
+
