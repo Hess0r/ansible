@@ -1,20 +1,20 @@
 ---
-- name: Install go
-  become: true
-  ansible.builtin.package:
-    name: golang
-    state: latest
-
-# - name: Download go installer
-#   get_url:
-#     url: "{{ go_mirror }}/go{{ go_version }}.{{ go_architecture }}.tar.gz"
-#     dest: "/tmp"
-#     checksum: "sha256:{{go_installer_checksum }}"
-
-# - name: Extract archive
+# - name: Install go
 #   become: true
-#   unarchive:
-#     src: "/tmp/go{{ go_version }}.{{ go_architecture }}.tar.gz"
-#     remote_src: yes
-#     dest: "{{ go_install_dir }}"
-#     creates: "{{ go_install_dir }}/go/bin"
+#   ansible.builtin.package:
+#     name: golang
+#     state: latest
+
+- name: Download go installer
+  get_url:
+    url: "{{ go_mirror }}/go{{ go_version }}.{{ go_architecture }}.tar.gz"
+    dest: "/tmp"
+    checksum: "sha256:{{go_installer_checksum }}"
+
+- name: Extract archive
+  become: true
+  unarchive:
+    src: "/tmp/go{{ go_version }}.{{ go_architecture }}.tar.gz"
+    remote_src: yes
+    dest: "{{ go_install_dir }}"
+    creates: "{{ go_install_dir }}/go/bin"
