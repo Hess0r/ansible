@@ -14,3 +14,5 @@ default_roles:
   - fd
   - lazydocker
   - lazygit
+  - ripgrep
+  - bash

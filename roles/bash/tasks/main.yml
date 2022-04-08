@@ -1,0 +1,5 @@
+---
+- name: Copy bashrc
+  ansible.builtin.template:
+    src: .bashrc.j2
+    dest: "{{ ansible_user_dir }}/.bashrc"

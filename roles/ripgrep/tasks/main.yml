@@ -1,0 +1,6 @@
+---
+- name: Instlal ripgrep
+  become: true
+  ansible.builtin.package:
+    name: ripgrep
+    state: latest
