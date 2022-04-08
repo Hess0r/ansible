@@ -1,6 +1,7 @@
 ---
-- name: Instlal ripgrep
+- name: Install ripgrep
   become: true
-  ansible.builtin.package:
+  ansible.builtin.apt:
+    dpkg_options: "force-overwrite"
     name: ripgrep
     state: latest
