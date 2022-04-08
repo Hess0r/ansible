@@ -1,8 +1,14 @@
 ---
 - name: Install bat
+  become: true
   ansible.builtin.package:
     name: bat
     state: latest
+
+- name: Create ~/.local directory if does not exist yet
+  file:
+    path: "{{ ansible_user_dir}}/.local/bin"
+    state: directory
 
 - name: Create symlink
   file:
