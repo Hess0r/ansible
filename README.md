@@ -19,16 +19,16 @@ ansible-playbook --diff --ask-become-pass main.yml
 To overwrite variables, create a values.yml file and reference it in the command:
 
 ```bash
-ansible-playbook --diff --extra-vars /path/to/variables.yml main.yml
+ansible-playbook --diff --extra-vars "@/path/to/variables.yml" main.yml
 ```
 
 Implementing the use for the following variables is TODO:
-- git_user_name
-- git_user_email
-- exclude_roles
-- neovim_version
-- ssh key (also requires ansible-vault implementation)
-- go_version
+- [ ] git_user_name
+- [ ] git_user_email
+- [ ] exclude_roles
+- [x] neovim_version
+- [ ] ssh key (also requires ansible-vault implementation)
+- [ ] go_version (this one is going to be tricky, cause of the checksum)
 
 ## Testing
 

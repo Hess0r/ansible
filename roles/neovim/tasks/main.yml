@@ -25,7 +25,7 @@
     repo: https://github.com/neovim/neovim.git
     single_branch: yes
     update: yes
-    version: master
+    version: "{{ neovim_version | default('master') }}"
   register: clone
 
 - name: Build
