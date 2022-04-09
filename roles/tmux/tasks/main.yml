@@ -4,3 +4,8 @@
   ansible.builtin.package:
     name: tmux
     state: latest
+
+- name: Copy tmux config
+  ansible.builtin.template:
+    src: tmux.conf.j2
+    dest: "{{ ansible_user_dir }}/.tmux.conf"

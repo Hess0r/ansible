@@ -1,0 +1,23 @@
+set -g default-terminal "screen-256color"
+set -ga terminal-overrides ",*256col*:Tc"
+
+set -g focus-events on
+set -sg escape-time 10
+
+# change prefix to C-a
+unbind C-b
+set-option -g prefix C-a
+bind-key C-a send-prefix
+
+# reload config
+bind r source-file ~/.tmux.conf
+
+# change indexing to start from 1
+set -g base-index 1
+
+# vi mode
+set-window-option -g mode-keys vi
+bind -r j select-pane -D
+bind -r k select-pane -U
+bind -r h select-pane -L
+bind -r l select-pane -R
