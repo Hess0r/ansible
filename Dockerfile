@@ -18,6 +18,8 @@ RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> \
     /etc/sudoers
 USER gsinka
 WORKDIR /home/gsinka/ansible
+COPY --chown=gsinka requirements.yml ./
+RUN ansible-galaxy install -r requirements.yml
 
 FROM gsinka
 COPY --chown=gsinka . .

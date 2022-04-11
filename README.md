@@ -23,12 +23,13 @@ ansible-playbook --diff --extra-vars "@/path/to/variables.yml" main.yml
 ```
 
 Implementing the use for the following variables is TODO:
-- [ ] git_user_name
-- [ ] git_user_email
-- [ ] exclude_roles
+- [x] git_user_name (required)
+- [x] git_user_email (required)
+- [x] exclude_roles
 - [x] neovim_version
 - [ ] ssh key (also requires ansible-vault implementation)
 - [ ] go_version (this one is going to be tricky, cause of the checksum)
+- [ ] node_version (for the default node installation via nvm)
 
 ## Testing
 
