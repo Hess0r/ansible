@@ -1,3 +1,6 @@
 ---
 - name: Install node
-  command: "nvm install {{ node_version | default('--lts') }}"
+  shell:
+    cmd: "source {{ ansible_user_dir }}/.nvm/nvm.sh && nvm install {{ node_version | default('--lts') }}"
+    executable: "/bin/bash"
+    creates: "{{ ansible_user_dir }}/.nvm/alias"
