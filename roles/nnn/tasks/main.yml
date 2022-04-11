@@ -1,0 +1,6 @@
+---
+- name: Install nnn
+  become: true
+  ansible.builtin.package:
+    name: nnn
+    state: latest

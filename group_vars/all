@@ -1,18 +1,18 @@
 default_roles:
   - system
-  - docker
+  - bash
+  - starship
   - htop
   - tmux
-  - gh
-  - kubectl
-  - neovim
-  - pandoc
-  - nvm
-  - starship
-  - go
   - bat
   - fd
+  - ripgrep
+  - pandoc
+  - gh
+  - neovim
+  - nvm
+  - go
   - lazydocker
   - lazygit
-  - ripgrep
-  - bash
+  - docker
+  - kubectl
