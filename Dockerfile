@@ -23,4 +23,4 @@ RUN ansible-galaxy install -r requirements.yml
 
 FROM gsinka
 COPY --chown=gsinka . .
-CMD ["sh", "-c", "ansible-playbook --diff main.yml"]
+CMD ["sh", "-c", "ansible-playbook --diff --extra-vars 'git_user_name=Test Elek, git_user_email=test@test.test' main.yml"]
