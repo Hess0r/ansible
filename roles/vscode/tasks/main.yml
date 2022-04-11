@@ -32,3 +32,13 @@
     - vscodevim.vim
     - Gruntfuggly.todo-tree
     - zhuangtongfa.material-theme
+
+- name: Copy keybindings
+  ansible.builtin.copy:
+    dest: "{{ ansible_user_dir }}/.config/Code/User/keybindings.json"
+    src: "keybindings.json"
+
+- name: Copy settings
+  ansible.builtin.copy:
+    dest: "{{ ansible_user_dir }}/.config/Code/User/settings.json"
+    src: "settings.json"
