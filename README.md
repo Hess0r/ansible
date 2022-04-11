@@ -30,7 +30,7 @@ Implementing the use for the following variables is TODO:
 - [ ] ssh key (also requires ansible-vault implementation)
 - [ ] ssh config (also requires ansible-vault implementation)
 - [ ] go_version (this one is going to be tricky, cause of the checksum)
-- [ ] node_version (for the default node installation via nvm)
+- [x] node_version (for the default node installation via nvm)
 
 ## Testing
 

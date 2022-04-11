@@ -1,10 +1,14 @@
 ---
+# This method could be really outdated on some systems
 # - name: Install go
 #   become: true
 #   ansible.builtin.package:
 #     name: golang
 #     state: latest
 
+# Another approuch would be to use a a collection from galaxy for this task
+
+# Figure out a way to not run this all the time
 - name: Download go installer
   get_url:
     url: "{{ go_mirror }}/go{{ go_version }}.{{ go_architecture }}.tar.gz"
