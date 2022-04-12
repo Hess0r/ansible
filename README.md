@@ -35,10 +35,9 @@ Currently the following variables are supported:
 - exclude_roles (array)
 - neovim_version (string, branch, or tag name)
 - node_version (string)
+- ssh key (dictionary, each pair of the key should be an entry)
 
 Implementing the use for the following variables is TODO:
-- [ ] ssh key (also requires ansible-vault implementation)
-- [ ] ssh config (also requires ansible-vault implementation)
 - [ ] go_version (this one is going to be tricky, cause of the checksum)
 
 ## Testing

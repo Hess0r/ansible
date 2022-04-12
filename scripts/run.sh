@@ -2,7 +2,7 @@
 
 set -ex
 
-PLAYBOOK_DIR="$HOME/repos/ansible"
+PLAYBOOK_DIR="$HOME/Repos/ansible"
 CONFIG_DIR="$HOME/.config/dotfiles"
 
 if ! [[ -x "$(command -v ansible)" ]]; then
