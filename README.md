@@ -1,4 +1,4 @@
-# Automated isntallation of my dev environment
+# Automated installation of my dev environment
 
 ## Usage
 
@@ -16,21 +16,30 @@ ansible-playbook --diff --ask-become-pass main.yml
 
 ### Configuration
 
-To overwrite variables, create a values.yml file and reference it in the command:
+To overwrite variables, create a values.yml file:
+
+```
+mkdir -p "$HOME/.config/dotfiles" && vim "$HOME/.config/dotfiles/values.yml"
+```
+> If `vim` is not installed use whatever text editor is available.
+
+And reference it in the `ansible-playbook` command:
 
 ```bash
 ansible-playbook --diff --extra-vars "@/path/to/variables.yml" main.yml
 ```
 
+Currently the following variables are supported:
+- git_user_name (string, required)
+- git_user_email (string, required)
+- exclude_roles (array)
+- neovim_version (string, branch, or tag name)
+- node_version (string)
+
 Implementing the use for the following variables is TODO:
-- [x] git_user_name (required)
-- [x] git_user_email (required)
-- [x] exclude_roles
-- [x] neovim_version
 - [ ] ssh key (also requires ansible-vault implementation)
 - [ ] ssh config (also requires ansible-vault implementation)
 - [ ] go_version (this one is going to be tricky, cause of the checksum)
-- [x] node_version (for the default node installation via nvm)
 
 ## Testing
 

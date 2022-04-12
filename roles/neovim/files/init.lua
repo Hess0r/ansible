@@ -99,12 +99,15 @@ vim.api.nvim_set_keymap('n', '<leader>sd', [[<cmd>lua require('telescope.builtin
 vim.api.nvim_set_keymap('n', '<leader>sp', [[<cmd>lua require('telescope.builtin').live_grep()<CR>]], opts)
 vim.api.nvim_set_keymap('n', '<leader>so', [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]], opts)
 vim.api.nvim_set_keymap('n', '<leader>sm', [[<cmd>lua require('telescope.builtin').marks()<CR>]], opts)
+vim.api.nvim_set_keymap('n', '<leader>sw', [[<cmd>lua require('telescope.builtin').spell_suggest()<CR>]], opts)
 vim.api.nvim_set_keymap('n', '<leader>?', [[<cmd>lua require('telescope.builtin').oldfiles()<CR>]], opts)
 vim.api.nvim_set_keymap('n', '<leader>f', [[<cmd>Neoformat<CR>]], opts)
 vim.api.nvim_set_keymap('n', '<leader>gs', [[<cmd>lua require('telescope.builtin').git_status()<CR>]], opts)
 vim.api.nvim_set_keymap('n', '<leader>gc', [[<cmd>lua require('telescope.builtin').git_commits()<CR>]], opts)
 vim.api.nvim_set_keymap('n', '<leader>gd', [[<cmd>lua require('telescope.builtin').git_bcommits()<CR>]], opts)
 vim.api.nvim_set_keymap('n', '<leader>gb', [[<cmd>lua require('telescope.builtin').git_branches()<CR>]], opts)
+
+vim.api.nvim_set_keymap('n', '<leader>ts', [[<cmd>set spell!<CR>]], opts)
 
 vim.api.nvim_set_keymap('n', '<leader>n', [[<cmd>Lexplore %:p:h<CR>]], opts)
 vim.api.nvim_set_keymap('n', '<leader>m', [[<cmd>Lexplore<CR>]], opts)
@@ -303,6 +306,10 @@ vim.g.which_key_map = {
     p = 'preview hunk',
     s = 'stage hunk',
     u = 'undo hunl',
+  },
+  t = {
+    name = '+toggle',
+    s = 'spell',
   },
   e = 'show line diagnostic',
   q = 'show current buffer diagnostics',
