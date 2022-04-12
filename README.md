@@ -36,9 +36,9 @@ Currently the following variables are supported:
 - neovim_version (string, branch, or tag name)
 - node_version (string)
 - ssh key (dictionary, each pair of the key should be an entry)
+- go_version (string: '1.18', '1.17.8', '1.16.15')
 
 Implementing the use for the following variables is TODO:
-- [ ] go_version (this one is going to be tricky, cause of the checksum)
 
 ## Testing
 

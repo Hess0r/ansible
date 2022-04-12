@@ -8,12 +8,25 @@
 
 # Another approuch would be to use a a collection from galaxy for this task
 
-# Figure out a way to not run this all the time
+- name: Include version variables
+  include_vars: "versions/{{ go_version }}.yml"
+
+- name: Assert variable loading
+  assert:
+    that: go_installer_checksum not in (None, '')
+
 - name: Download go installer
   get_url:
     url: "{{ go_mirror }}/go{{ go_version }}.{{ go_architecture }}.tar.gz"
     dest: "/tmp"
-    checksum: "sha256:{{go_installer_checksum }}"
+    checksum: "sha256:{{ go_installer_checksum }}"
+  when: ansible_local['golang'] is not defined or ansible_local['golang']['general']['version'] != go_version
+
+- name: Delete old installation
+  become: true
+  ansible.builtin.file:
+    path: "{{ go_install_dir }}/go"
+    state: absent
   when: ansible_local['golang'] is not defined or ansible_local['golang']['general']['version'] != go_version
 
 - name: Extract archive
