@@ -293,6 +293,7 @@ vim.g.which_key_map = {
     o = 'document symbols',
     p = 'live grep',
     t = 'tags',
+    w = 'spell suggestions',
   },
   g = {
     name = '+git',
