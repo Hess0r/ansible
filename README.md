@@ -38,8 +38,6 @@ Currently the following variables are supported:
 - ssh key (dictionary, each pair of the key should be an entry)
 - go_version (string: '1.18', '1.17.8', '1.16.15')
 
-Implementing the use for the following variables is TODO:
-
 ## Testing
 
 The playbook can be tested in a docker container. To build the base image run the [build.sh](build.sh) script.
