@@ -26,7 +26,22 @@ mkdir -p "$HOME/.config/dotfiles" && vim "$HOME/.config/dotfiles/values.yml"
 And reference it in the `ansible-playbook` command:
 
 ```bash
-ansible-playbook --diff --extra-vars "@/path/to/variables.yml" main.yml
+ansible-playbook --diff --extra-vars "@$HOME/.config/dotfiles/values.yml" main.yml
+```
+
+For encrypted values, created via `ansible-vault` use either the `--ask-vault-pass`, option, or save it in a file, and reference it in the command:
+
+```
+mkdir -p "$HOME/.config/dotfiles" && vim "$HOME/.config/dotfiles/vault-password.txt"
+
+ansible-playbook --diff --extra-vars "@$HOME/.config/dotfiles/variables.yml" --vault-password-file "$HOME/.config/dotfiles/vault-password.txt" main.yml
+```
+
+Encrypted variable values can be created with the following command:
+
+```
+ansible-vault encrypt_string --vault-password-file "$HOME/.config/dotfiles/vault-password.txt" "secret" --name "variable_name"
+cat myfile | ansible-vault encrypt_string --vault-password-file "$HOME/.config/dotfiles/vault-password.txt" --stdin-name "variable_name"
 ```
 
 Currently the following variables are supported:
