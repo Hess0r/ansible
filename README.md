@@ -34,7 +34,7 @@ For encrypted values, created via `ansible-vault` use either the `--ask-vault-pa
 ```
 mkdir -p "$HOME/.config/dotfiles" && vim "$HOME/.config/dotfiles/vault-password.txt"
 
-ansible-playbook --diff --extra-vars "@$HOME/.config/dotfiles/variables.yml" --vault-password-file "$HOME/.config/dotfiles/vault-password.txt" main.yml
+ansible-playbook --diff --extra-vars "@$HOME/.config/dotfiles/values.yml" --vault-password-file "$HOME/.config/dotfiles/vault-password.txt" main.yml
 ```
 
 Encrypted variable values can be created with the following command:
