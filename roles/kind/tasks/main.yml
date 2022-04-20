@@ -1,0 +1,7 @@
+---
+- name: Install kind
+  command: go install sigs.k8s.io/kind@v0.12.0
+  args:
+    creates: "{{ lookup('env', 'GOBIN') }}/kind"
+  when: ansible_local['golang'] is defined
+
