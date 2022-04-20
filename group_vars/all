@@ -21,3 +21,4 @@ default_roles:
   - lazygit
   - docker
   - kubectl
+  - terraform
