@@ -1,4 +1,9 @@
 ---
+- name: Install bash
+  ansible.builtin.package:
+    name: bash
+    state: latest
+
 - name: Copy bashrc
   ansible.builtin.template:
     src: bashrc.j2

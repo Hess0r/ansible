@@ -1,13 +1,4 @@
 ---
-# This method could be really outdated on some systems
-# - name: Install go
-#   become: true
-#   ansible.builtin.package:
-#     name: golang
-#     state: latest
-
-# Another approuch would be to use a a collection from galaxy for this task
-
 - name: Include version variables
   include_vars: "versions/{{ go_version }}.yml"
 

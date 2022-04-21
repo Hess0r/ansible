@@ -1,5 +1,4 @@
 ---
-# Figure out a way to not run this all the time
 - name: Get latest version
   uri:
     url: https://github.com/jesseduffield/lazydocker/releases/latest
@@ -16,6 +15,7 @@
   get_url:
     url: "https://github.com/jesseduffield/lazydocker/releases/download/{{ release_version }}/{{ release_file_name }}"
     dest: "/tmp/lazydocker.tar.gz"
+  when: ansible_local['lazydocker'] is not defined or ansible_local['lazydocker']['general']['version'] != version.json.tag_name
 
 - name: Create ~/.local directory if does not exist yet
   file:
@@ -28,3 +28,10 @@
     src: "/tmp/lazydocker.tar.gz"
     remote_src: yes
     dest: "{{ ansible_user_dir}}/.local/bin"
+  when: ansible_local['lazydocker'] is not defined or ansible_local['lazydocker']['general']['version'] != version.json.tag_name
+
+- name: Set fact
+  become: true
+  ansible.builtin.template:
+    src: lazydocker.fact.j2
+    dest: /etc/ansible/facts.d/lazydocker.fact
