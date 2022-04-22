@@ -92,6 +92,7 @@ vim.api.nvim_set_keymap('v', '<leader>', [[<cmd>WhichKeyVisual '<Space>'<CR>]], 
 
 vim.api.nvim_set_keymap('n', '<leader><space>', [[<cmd>lua require('telescope.builtin').buffers()<CR>]], opts)
 vim.api.nvim_set_keymap('n', '<leader>sf', [[<cmd>lua require('telescope.builtin').find_files()<CR>]], opts)
+vim.api.nvim_set_keymap('n', '<leader>sg', [[<cmd>lua require('telescope.builtin').git_files()<CR>]], opts)
 vim.api.nvim_set_keymap('n', '<leader>sb', [[<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>]], opts)
 vim.api.nvim_set_keymap('n', '<leader>sh', [[<cmd>lua require('telescope.builtin').help_tags()<CR>]], opts)
 vim.api.nvim_set_keymap('n', '<leader>st', [[<cmd>lua require('telescope.builtin').tags()<CR>]], opts)
@@ -288,6 +289,7 @@ vim.g.which_key_map = {
     b = 'cur buf fuzzy find',
     d = 'grep string',
     f = 'find files',
+    g = 'find git files',
     h = 'help tags',
     m = 'marks',
     o = 'document symbols',
