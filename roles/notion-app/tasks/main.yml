@@ -1,12 +1,9 @@
 ---
-- name: Add apat repository
-  become: true
-  apt_repository:
-    repo: "deb [trusted=yes] https://apt.fury.io/notion-repackaged/ /"
-    state: present
-
-- name: Install Notion-app
-  become: true
-  package:
-    name: notion-app
-    state: latest
+- name: Include task based on Linux distribution
+  include_tasks: "{{ found_file }}"
+  with_first_found:
+    - files:
+      - "{{ ansible_distribution | lower }}.yml"
+      - default.yml
+  loop_control:
+    loop_var: found_file

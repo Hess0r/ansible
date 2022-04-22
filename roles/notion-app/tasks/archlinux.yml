@@ -1,0 +1,7 @@
+---
+- name: Install Notion-app
+  become: true
+  kewlfft.aur.aur:
+    use: yay
+    name: notion-app
+    state: latest

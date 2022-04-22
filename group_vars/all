@@ -16,12 +16,12 @@ default_roles:
   #- nvm
   #- node
   #- go
-  ##- notion-app
-  - lazydocker
-  - lazygit
+  #- notion-app
+  #- lazydocker
+  #- lazygit
   #- docker
   #- kubectl
-  #- terraform
+  ##- terraform
   #- kind
-  #- httpie
+  - httpie
   #- lsp-servers
