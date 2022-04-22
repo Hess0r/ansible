@@ -11,7 +11,7 @@ RUN echo '%wheel ALL=(ALL) NOPASSWD:ALL' >> \
 USER gsinka
 WORKDIR /home/gsinka
 RUN git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -si --noconfirm
-RUN rm -rf yay
+RUN rm -rf yay-bin
 WORKDIR /home/gsinka/ansible
 COPY --chown=gsinka requirements.yml ./
 RUN ansible-galaxy install -r requirements.yml

@@ -1,20 +1,12 @@
 ---
-- name: Dependencies
-  become: true
-  ansible.builtin.package:
-    name:
-      - ninja-build
-      - gettext
-      - libtool
-      - libtool-bin
-      - autoconf
-      - automake
-      - cmake
-      - g++
-      - pkg-config
-      - unzip
-      - curl
-      - doxygen
+- name: Include dependecy installation
+  include_tasks: "{{ found_file }}"
+  with_first_found:
+    - files:
+      - "{{ ansible_distribution | lower }}.yml"
+      - default.yml
+  loop_control:
+    loop_var: found_file
 
 - name: Clone
   ansible.builtin.git:

@@ -1,7 +1,11 @@
 ---
-- name: Install Notion-app
-  become: true
-  kewlfft.aur.aur:
-    use: yay
-    name: notion-app
-    state: latest
+- name: Info
+  debug:
+    msg: "This task has to be reviewed"
+
+# - name: Install Notion-app
+#   become: true
+#   kewlfft.aur.aur:
+#     use: yay
+#     name: notion-app
+#     state: latest

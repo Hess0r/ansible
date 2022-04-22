@@ -7,3 +7,41 @@
       - default.yml
   loop_control:
     loop_var: found_file
+
+- name: Create Docker plugin directory
+  file:
+    path: "{{ ansible_user_dir }}/.docker/cli-plugins"
+    state: directory
+
+- name: Install Docker Compose V2
+  get_url:
+    url: https://github.com/docker/compose/releases/download/v2.0.1/docker-compose-linux-x86_64
+    dest: "{{ ansible_user_dir }}/.docker/cli-plugins/docker-compose"
+    mode: "+x"
+
+- name: Add user to docker group
+  become: true
+  ansible.builtin.user:
+    append: yes
+    groups: docker
+    name: "{{ lookup('pipe', 'whoami') }}"
+
+- name: Enable service
+  become: true
+  ansible.builtin.systemd:
+    enabled: yes
+    name: docker
+    state: started
+
+- name: Create docker directory if does not exist yet
+  become: true
+  file:
+    path: /etc/docker
+    state: directory
+
+- name: Copy daemon.json
+  become: true
+  ansible.builtin.template:
+    dest: "/etc/docker/daemon.json"
+    src: "daemon.json"
+  notify: restart_docker

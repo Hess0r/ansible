@@ -1,4 +1,6 @@
 ---
+# This onw is broken at the moment.
+# The npm binary is only available after the bashrc got soruced
 - name: Install lsp packages
   community.general.npm:
     name: "{{ lsp_item }}"
