@@ -2,8 +2,13 @@
 - name: Install PHP
   become: true
   ansible.builtin.package:
+    name: php
+    state: latest
+
+- name: Install PHP extensions
+  become: true
+  ansible.builtin.package:
     name: 
-      - php
       - php-fileinfo
       - php-mbstring
       - php-bcmath
