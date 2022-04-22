@@ -1,0 +1,14 @@
+---
+- name: Install core packages
+  become: true
+  ansible.builtin.package:
+    name:
+      - unzip
+      - curl
+      - direnv
+      - fzf
+      - jq
+      - tree
+      - gnupg
+    state: latest
+

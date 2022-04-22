@@ -1,0 +1,7 @@
+---
+- name: Install lazydocker
+  kewlfft.aur.aur:
+    use: yay
+    name: lazydocker
+    state: latest
+

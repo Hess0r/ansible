@@ -1,0 +1,20 @@
+---
+- name: Install core packages
+  become: true
+  apt:
+    name:
+      - build-essential
+      - software-properties-common
+      - unzip
+      - apt-utils
+      - curl
+      - lsof
+      - moreutils
+      - direnv
+      - fzf
+      - jq
+      - tree
+      - gnupg
+      - apt-transport-https
+      - ca-certificates
+    state: latest

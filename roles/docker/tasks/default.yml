@@ -1,0 +1,39 @@
+---
+- name: Add Docker GPG key
+  become: true
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+
+- name: Add Docker apt repository
+  become: true
+  apt_repository:
+    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release | lower }} stable"
+    state: present
+
+- name: Install Docker
+  become: true
+  ansible.builtin.package:
+    name: 
+      - "docker-ce"
+      - "docker-ce-cli"
+      - "containerd.io"
+    state: latest
+
+- name: Create Docker plugin directory
+  file:
+    path: "{{ ansible_user_dir }}/.docker/cli-plugins"
+    state: directory
+
+- name: Install Docker Compose V2
+  get_url:
+    url: https://github.com/docker/compose/releases/download/v2.0.1/docker-compose-linux-x86_64
+    dest: "{{ ansible_user_dir }}/.docker/cli-plugins/docker-compose"
+    mode: "+x"
+
+- name: Add user to docker group
+  become: true
+  ansible.builtin.user:
+    append: yes
+    groups: docker
+    name: "{{ ansible_env['USER'] }}"

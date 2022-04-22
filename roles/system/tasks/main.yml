@@ -1,20 +1,9 @@
 ---
-- name: Install core packages
-  become: true
-  apt:
-    name:
-      - build-essential
-      - software-properties-common
-      - unzip
-      - apt-utils
-      - curl
-      - lsof
-      - moreutils
-      - direnv
-      - fzf
-      - jq
-      - tree
-      - gnupg
-      - apt-transport-https
-      - ca-certificates
-    state: latest
+- name: Include task based on Linux distribution
+  include_tasks: "{{ found_file }}"
+  with_first_found:
+    - files:
+      - "{{ ansible_distribution | lower }}.yml"
+      - default.yml
+  loop_control:
+    loop_var: found_file

@@ -1,0 +1,23 @@
+---
+# This only works for Debian based distibutions
+# - name: Get DEB architecture
+#   shell: dpkg --print-architecture
+#   register: deb_architecture
+
+- name: Add Github GPG key
+  become: true
+  apt_key:
+    url: https://cli.github.com/packages/githubcli-archive-keyring.gpg
+    state: present
+
+- name: Add Github apt repository
+  become: true
+  apt_repository:
+    # repo: "deb [arch={{ deb_architecture.stdout }}] https://cli.github.com/packages stable main"
+    repo: deb https://cli.github.com/packages stable main
+
+- name: Install Github CLI
+  become: true
+  ansible.builtin.package:
+    name: gh
+    state: latest

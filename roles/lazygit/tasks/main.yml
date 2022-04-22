@@ -1,37 +1,9 @@
 ---
-- name: Get latest version
-  uri:
-    url: https://github.com/jesseduffield/lazygit/releases/latest
-    return_content: yes
-    body_format: json
-    headers:
-      Accept: application/json
-  register: version
-
-- name: Download archive
-  vars:
-    release_version: "{{ version.json.tag_name }}"
-    release_file_name: "lazygit_{{ version.json.tag_name | replace('v','')}}_Linux_{{ ansible_architecture}}.tar.gz"
-  get_url:
-    url: "https://github.com/jesseduffield/lazygit/releases/download/{{ release_version }}/{{ release_file_name }}"
-    dest: "/tmp/lazygit.tar.gz"
-  when: ansible_local['lazygit'] is not defined or ansible_local['lazygit']['general']['version'] != version.json.tag_name
-
-- name: Create ~/.local directory if does not exist yet
-  file:
-    path: "{{ ansible_user_dir}}/.local/bin"
-    state: directory
-
-- name: Extract archive
-  become: true
-  unarchive:
-    src: "/tmp/lazygit.tar.gz"
-    remote_src: yes
-    dest: "{{ ansible_user_dir}}/.local/bin"
-  when: ansible_local['lazygit'] is not defined or ansible_local['lazygit']['general']['version'] != version.json.tag_name
-
-- name: Set fact
-  become: true
-  ansible.builtin.template:
-    src: lazygit.fact.j2
-    dest: /etc/ansible/facts.d/lazygit.fact
+- name: Include task based on Linux distribution
+  include_tasks: "{{ found_file }}"
+  with_first_found:
+    - files:
+      - "{{ ansible_distribution | lower }}.yml"
+      - default.yml
+  loop_control:
+    loop_var: found_file

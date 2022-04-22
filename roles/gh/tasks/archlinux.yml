@@ -1,0 +1,6 @@
+---
+- name: Install Github CLI
+  become: true
+  ansible.builtin.package:
+    name: github-cli
+    state: latest
