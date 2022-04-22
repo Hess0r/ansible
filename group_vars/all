@@ -24,3 +24,4 @@ default_roles:
   - terraform
   - kind
   - httpie
+  - lsp-servers

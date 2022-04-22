@@ -134,7 +134,7 @@ nvim_treesitter.setup {
       node_decremental = 'grm',
     },
   },
-  ensure_installed = "maintained",
+  ensure_installed = "all",
 }
 
 -- LSP

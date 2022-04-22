@@ -1,0 +1,19 @@
+---
+- name: Install lsp packages
+  community.general.npm:
+    name: "{{ lsp_item }}"
+    global: yes
+    state: latest
+  loop_control:
+    loop_var: lsp_item
+  with_items:
+    - dockerfile-language-server-nodejs
+    - bash-language-server
+    - vscode-langservers-extracted
+    - typescript
+    - typescript-language-server
+    - intelephense
+    - yaml-language-server
+    - prettier
+    - eslint
+
