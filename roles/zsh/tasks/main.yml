@@ -1,0 +1,54 @@
+---
+- name: Install zsh
+  become: true
+  ansible.builtin.package:
+    name: zsh
+    state: latest
+  when: user_shell is defined and user_shell == 'zsh'
+
+- name: Checking installation
+  stat:
+    path: "{{ ansible_user_dir }}/.oh-my-zsh"
+  register: install
+  when: user_shell is defined and user_shell == 'zsh'
+
+- name: Download oh-my-zsh
+  get_url:
+    dest: /tmp/omz-install.sh
+    mode: 0755
+    url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+  when: user_shell is defined and user_shell == 'zsh' and not install.stat.exists
+
+- name: Install oh-my-zsh
+  shell: /tmp/omz-install.sh
+  when: user_shell is defined and user_shell == 'zsh' and not install.stat.exists
+
+- name: Copy zshrc
+  ansible.builtin.template:
+    src: zshrc.j2
+    dest: "{{ ansible_user_dir }}/.zshrc"
+  when: user_shell is defined and user_shell == 'zsh'
+
+- name: Copy inputrc
+  ansible.builtin.template:
+    src: inputrc.j2
+    dest: "{{ ansible_user_dir }}/.inputrc"
+  when: user_shell is defined and user_shell == 'zsh'
+
+- name: Set default shell
+  become: true
+  user:
+    name: "{{ lookup('pipe', 'whoami') }}"
+    shell: /usr/bin/zsh
+  when: user_shell is defined and user_shell == 'zsh'
+
+- name: Clone zsh-completions
+  ansible.builtin.git:
+    clone: yes
+    depth: 1
+    dest: "{{ ansible_user_dir }}/.oh-my-zsh/custom/plugins/zsh-completions"
+    repo: https://github.com/zsh-users/zsh-completions
+    single_branch: yes
+    update: yes
+    version: "master"
+  when: user_shell is defined and user_shell == 'zsh'
