@@ -47,10 +47,11 @@ cat myfile | ansible-vault encrypt_string --vault-password-file "$HOME/.config/d
 Currently the following variables are supported:
 - git_user_name (string, required)
 - git_user_email (string, required)
+- user_shell (string: 'bash', 'zsh'; if not specified 'bash' is used)
 - exclude_roles (array)
 - neovim_version (string, branch, or tag name)
 - node_version (string)
-- ssh key (dictionary, each pair of the key should be an entry)
+- ssh_keys (dictionary, each pair of the key should be an entry)
 - go_version (string: '1.18', '1.17.8', '1.16.15')
 
 ## Testing
