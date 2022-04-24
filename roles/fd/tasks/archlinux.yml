@@ -1,0 +1,6 @@
+---
+- name: Install fd
+  become: true
+  ansible.builtin.package:
+    name: fd
+    state: latest

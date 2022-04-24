@@ -2,6 +2,7 @@ default_roles:
   - system
   - git
   - bash
+  - zsh
   - ssh
   - starship
   - htop
@@ -24,4 +25,4 @@ default_roles:
   - terraform
   - kind
   - httpie
-  - lsp-servers
+  #- lsp-servers

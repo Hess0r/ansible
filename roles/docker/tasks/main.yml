@@ -1,24 +1,12 @@
 ---
-- name: Add Docker GPG key
-  become: true
-  apt_key:
-    url: https://download.docker.com/linux/ubuntu/gpg
-    state: present
-
-- name: Add Docker apt repository
-  become: true
-  apt_repository:
-    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release | lower }} stable"
-    state: present
-
-- name: Install Docker
-  become: true
-  ansible.builtin.package:
-    name: 
-      - "docker-ce"
-      - "docker-ce-cli"
-      - "containerd.io"
-    state: latest
+- name: Include task based on Linux distribution
+  include_tasks: "{{ found_file }}"
+  with_first_found:
+    - files:
+      - "{{ ansible_distribution | lower }}.yml"
+      - default.yml
+  loop_control:
+    loop_var: found_file
 
 - name: Create Docker plugin directory
   file:
@@ -36,4 +24,24 @@
   ansible.builtin.user:
     append: yes
     groups: docker
-    name: "{{ ansible_env['USER'] }}"
+    name: "{{ lookup('pipe', 'whoami') }}"
+
+- name: Enable service
+  become: true
+  ansible.builtin.systemd:
+    enabled: yes
+    name: docker
+    state: started
+
+- name: Create docker directory if does not exist yet
+  become: true
+  file:
+    path: /etc/docker
+    state: directory
+
+- name: Copy daemon.json
+  become: true
+  ansible.builtin.template:
+    dest: "/etc/docker/daemon.json"
+    src: "daemon.json"
+  notify: restart_docker

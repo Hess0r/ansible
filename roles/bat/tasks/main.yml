@@ -1,17 +1,9 @@
 ---
-- name: Install bat
-  become: true
-  ansible.builtin.package:
-    name: bat
-    state: latest
-
-- name: Create ~/.local directory if does not exist yet
-  file:
-    path: "{{ ansible_user_dir}}/.local/bin"
-    state: directory
-
-- name: Create symlink
-  file:
-    src: "/usr/bin/batcat"
-    dest: "{{ ansible_user_dir }}/.local/bin/bat"
-    state: link
+- name: Include task based on Linux distribution
+  include_tasks: "{{ found_file }}"
+  with_first_found:
+    - files:
+      - "{{ ansible_distribution | lower }}.yml"
+      - default.yml
+  loop_control:
+    loop_var: found_file

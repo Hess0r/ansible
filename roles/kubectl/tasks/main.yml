@@ -1,18 +1,9 @@
 ---
-- name: Add k8s GPG key
-  become: true
-  apt_key:
-    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
-    state: present
-
-- name: Add k8s apt repository
-  become: true
-  apt_repository:
-    repo: "deb https://apt.kubernetes.io/ kubernetes-xenial main"
-    state: present
-
-- name: Install kubectl
-  become: true
-  ansible.builtin.package:
-    name: kubectl
-    state: latest
+- name: Include task based on Linux distribution
+  include_tasks: "{{ found_file }}"
+  with_first_found:
+    - files:
+      - "{{ ansible_distribution | lower }}.yml"
+      - default.yml
+  loop_control:
+    loop_var: found_file

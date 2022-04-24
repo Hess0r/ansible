@@ -1,0 +1,17 @@
+---
+- name: Dependencies
+  become: true
+  ansible.builtin.package:
+    name:
+      - ninja-build
+      - gettext
+      - libtool
+      - libtool-bin
+      - autoconf
+      - automake
+      - cmake
+      - g++
+      - pkg-config
+      - unzip
+      - curl
+      - doxygen

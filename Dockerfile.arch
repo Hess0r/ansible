@@ -1,0 +1,24 @@
+FROM archlinux as base
+WORKDIR /usr/local/bin
+RUN pacman -Syu --noconfirm && \
+    pacman -S --noconfirm curl git sudo ansible base-devel
+
+FROM base as gsinka
+RUN groupadd --gid 1000 gsinka
+RUN useradd -m --uid 1000 --gid 1000 -G wheel gsinka
+RUN echo '%wheel ALL=(ALL) NOPASSWD:ALL' >> \
+    /etc/sudoers
+USER gsinka
+WORKDIR /home/gsinka
+RUN git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -si --noconfirm
+RUN rm -rf yay-bin
+WORKDIR /home/gsinka/ansible
+COPY --chown=gsinka requirements.yml ./
+RUN ansible-galaxy install -r requirements.yml
+RUN mkdir -p /home/gsinka/.config/dotfiles
+RUN echo "git_user_name: Teszt Elek" > /home/gsinka/.config/dotfiles/values.yml
+RUN echo "git_user_email: test@test.com" >> /home/gsinka/.config/dotfiles/values.yml
+
+FROM gsinka
+COPY --chown=gsinka . .
+CMD ["sh", "-c", "ansible-playbook --diff --extra-vars @~/.config/dotfiles/values.yml main.yml"]

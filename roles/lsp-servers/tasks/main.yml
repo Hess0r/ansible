@@ -1,9 +1,21 @@
 ---
+# This onw is broken at the moment.
+# The npm binary is only available after the bashrc got soruced
+# - name: Load nvm
+#   shell: 
+#     cmd: "source {{ ansible_user_dir }}/.nvm/nvm.sh && which npm"
+#     executable: '/bin/bash'
+#   register: npm_binary
+
+# - name: Debug
+#   debug: "var=npm_binary"
+
 - name: Install lsp packages
   community.general.npm:
     name: "{{ lsp_item }}"
     global: yes
     state: latest
+    # executable: "{{ npm_binary.stdout_lines }}"
   loop_control:
     loop_var: lsp_item
   with_items:

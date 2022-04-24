@@ -1,0 +1,38 @@
+---
+- name: Install core packages
+  become: true
+  ansible.builtin.package:
+    name:
+      - unzip
+      - curl
+      - direnv
+      - fzf
+      - jq
+      - tree
+      - gnupg
+      - base-devel
+    state: latest
+
+- name: Set up sudo
+  become: true
+  ansible.builtin.replace:
+    path: "/etc/sudoers.d/10-installer"
+    regexp: '\%wheel ALL=\(ALL\) ALL'
+    replace: '%wheel ALL=(ALL) NOPASSWD: ALL'
+
+# - name: Clone yay
+#   ansible.builtin.git:
+#     clone: yes
+#     depth: 1
+#     dest: "{{ ansible_user_dir }}/Repos/yay"
+#     force: yes
+#     repo: https://aur.archlinux.org/yay-bin.git
+#     single_branch: yes
+#     update: yes
+#   register: clone
+
+# - name: Build and install yay
+#   command:
+#     chdir: "{{ ansible_user_dir }}/Repos/yay"
+#     cmd: "makepkg -sfi --noconfirm"
+#     creates: /usr/bin/yay

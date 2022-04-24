@@ -1,0 +1,12 @@
+---
+- name: Add apat repository
+  become: true
+  apt_repository:
+    repo: "deb [trusted=yes] https://apt.fury.io/notion-repackaged/ /"
+    state: present
+
+- name: Install Notion-app
+  become: true
+  package:
+    name: notion-app
+    state: latest

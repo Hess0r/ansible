@@ -1,0 +1,6 @@
+---
+- name: Install Docker
+  become: true
+  ansible.builtin.package:
+    name: docker
+    state: latest

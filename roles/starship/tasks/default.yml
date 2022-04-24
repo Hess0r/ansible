@@ -1,0 +1,53 @@
+---
+- name: Get latest version
+  uri:
+    url: https://github.com/starship/starship/releases/latest
+    return_content: yes
+    body_format: json
+    headers:
+      Accept: application/json
+  register: version
+
+- name: Get Starship installer
+  get_url:
+    url: https://starship.rs/install.sh
+    dest: /tmp/starship_install.sh
+    mode: '0755'
+  when: ansible_local['starship'] is not defined or ansible_local['starship']['general']['version'] != version.json.tag_name
+
+- name: Delete old installation
+  become: true
+  ansible.builtin.file:
+    path: /usr/local/bin/starship
+    state: absent
+  when: ansible_local['starship'] is not defined or ansible_local['starship']['general']['version'] != version.json.tag_name
+
+- name: Install Starship
+  become: true
+  shell:
+    cmd: /tmp/starship_install.sh --yes
+    executable: '/bin/sh'
+    creates: /usr/local/bin/starship
+  when: ansible_local['starship'] is not defined or ansible_local['starship']['general']['version'] != version.json.tag_name
+
+- name: Create config folder
+  ansible.builtin.file:
+    path: "{{ ansible_user_dir }}/.config/starship"
+    state: directory
+
+- name: Copy config file
+  ansible.builtin.template:
+    src: config.j2
+    dest: "{{ ansible_user_dir }}/.config/starship/config.toml"
+
+- name: Create facts directory
+  become: true
+  ansible.builtin.file:
+    path: /etc/ansible/facts.d
+    state: directory
+
+- name: Set fact
+  become: true
+  ansible.builtin.template:
+    src: starship.fact.j2
+    dest: /etc/ansible/facts.d/starship.fact

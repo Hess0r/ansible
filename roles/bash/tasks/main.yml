@@ -3,13 +3,23 @@
   ansible.builtin.package:
     name: bash
     state: latest
+  when: user_shell is undefined or user_shell == 'bash'
 
 - name: Copy bashrc
   ansible.builtin.template:
     src: bashrc.j2
     dest: "{{ ansible_user_dir }}/.bashrc"
+  when: user_shell is undefined or user_shell == 'bash'
 
 - name: Copy inputrc
   ansible.builtin.template:
     src: inputrc.j2
     dest: "{{ ansible_user_dir }}/.inputrc"
+  when: user_shell is undefined or user_shell == 'bash'
+
+- name: Set default shell
+  become: true
+  user:
+    name: "{{ lookup('pipe', 'whoami') }}"
+    shell: /usr/bin/bash
+  when: user_shell is undefined or user_shell == 'bash'

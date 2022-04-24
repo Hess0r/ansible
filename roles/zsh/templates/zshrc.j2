@@ -1,0 +1,55 @@
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+# EXPORTS
+# ==========================================================
+export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
+
+# OH-MY-ZSH
+# ==========================================================
+export ZSH="$HOME/.oh-my-zsh"
+
+ZSH_THEME="robbyrussell"
+
+# HIST_STAMPS="mm/dd/yyyy"
+
+plugins=(direnv docker docker-compose fzf git gh golang httpie kubectl nvm ripgrep tmux zs-completions)
+
+source $ZSH/oh-my-zsh.sh
+
+export EDITOR='nvim'
+
+# ALIASES
+# ==========================================================
+alias n="nnn -de"
+alias lg="lazygit"
+alias ld="lazydocker"
+alias vim='nvim'
+alias v='nvim .'
+
+# COMPLETION
+# ==========================================================
+if type kind &>/dev/null; then
+  source <(kind completion bash)
+fi
+
+# FUNCTIONS
+# ==========================================================
+fco() {
+    branch=`git branch | fzf --layout=reverse --height=10% --preview-window=right:hidden --info=inline | tr -d "*"`
+    if [[ -z $branch ]]; then
+        return 0
+    fi
+    git checkout $branch
+}
+
+fdiff() {
+    git diff $@ --name-only | fzf -m --ansi --preview 'git diff $@ --color=always -- {-1}'
+}
+
+fmux() {
+    session=`tmux ls | fzf --layout=reverse --height=10% --preview-window=right:hidden --info=inline | sed 's/:.*//'`
+    if [[ -z $session ]]; then
+        return 0
+    fi
+    tmux a -t $session
+}

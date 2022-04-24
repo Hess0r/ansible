@@ -1,0 +1,7 @@
+---
+- name: Install kubectl
+  become: true
+  ansible.builtin.package:
+    name: kubectl
+    state: latest
+

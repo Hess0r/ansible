@@ -18,7 +18,7 @@ ansible-playbook --diff --ask-become-pass main.yml
 
 To overwrite variables, create a values.yml file:
 
-```
+```bash
 mkdir -p "$HOME/.config/dotfiles" && vim "$HOME/.config/dotfiles/values.yml"
 ```
 > If `vim` is not installed use whatever text editor is available.
@@ -31,7 +31,7 @@ ansible-playbook --diff --extra-vars "@$HOME/.config/dotfiles/values.yml" main.y
 
 For encrypted values, created via `ansible-vault` use either the `--ask-vault-pass`, option, or save it in a file, and reference it in the command:
 
-```
+```bash
 mkdir -p "$HOME/.config/dotfiles" && vim "$HOME/.config/dotfiles/vault-password.txt"
 
 ansible-playbook --diff --extra-vars "@$HOME/.config/dotfiles/values.yml" --vault-password-file "$HOME/.config/dotfiles/vault-password.txt" main.yml
@@ -39,7 +39,7 @@ ansible-playbook --diff --extra-vars "@$HOME/.config/dotfiles/values.yml" --vaul
 
 Encrypted variable values can be created with the following command:
 
-```
+```bash
 ansible-vault encrypt_string --vault-password-file "$HOME/.config/dotfiles/vault-password.txt" "secret" --name "variable_name"
 cat myfile | ansible-vault encrypt_string --vault-password-file "$HOME/.config/dotfiles/vault-password.txt" --stdin-name "variable_name"
 ```
