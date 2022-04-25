@@ -4,16 +4,27 @@ set -ga terminal-overrides ",*256col*:Tc"
 set -g focus-events on
 set -sg escape-time 10
 
+# increase history
+set -g history-limit 5000
+
 # change prefix to C-a
 unbind C-b
 set-option -g prefix C-a
 bind-key C-a send-prefix
 
 # reload config
-bind r source-file ~/.tmux.conf
+bind r source-file ~/.tmux.conf \; display '~/.tmux.conf sourced'
 
 # change indexing to start from 1
 set -g base-index 1
+setw -g pane-base-index 1
+
+# renumber windows in case of gaps
+set -g renumber-windows on
+
+# easier splitting
+bind - split-window -v
+bind _ split-window -h
 
 # vi mode
 set-window-option -g mode-keys vi
