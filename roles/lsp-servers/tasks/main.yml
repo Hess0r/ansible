@@ -28,4 +28,5 @@
     - yaml-language-server
     - prettier
     - eslint
+    - "@prisma/language-server"
 

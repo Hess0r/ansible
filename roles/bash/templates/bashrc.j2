@@ -86,7 +86,8 @@ if type nvim &>/dev/null; then
   alias v='nvim .'
 fi
 
-alias n="nnn -de"
+# alias n="nnn -de"
+alias nn="n -Hde"
 
 alias lg="lazygit"
 alias ld="lazydocker"
@@ -174,4 +175,20 @@ fmux() {
         return 0
     fi
     tmux a -t $session
+}
+
+n() {
+    if [ -n $NNNLVL ] && [ "${NNNLVL:-0}" -ge 1 ]; then
+      echo "nnn is already running"
+      return
+    fi
+
+    export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+
+    nnn "$@"
+
+    if [ -f "$NNN_TMPFILE" ]; then
+      . "$NNN_TMPFILE"
+      rm -f "$NNN_TMPFILE" > /dev/null
+    fi
 }
