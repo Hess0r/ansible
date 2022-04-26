@@ -4,6 +4,7 @@
   apt_key:
     url: https://apt.releases.hashicorp.com/gpg
     state: present
+    keyring: /etc/apt/trusted.gpg.d/hashicorp-archive-keyring.gpg
 
 - name: Add HashiCorp repository
   become: true

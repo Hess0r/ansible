@@ -1,14 +1,10 @@
 ---
-# This only works for Debian based distibutions
-# - name: Get DEB architecture
-#   shell: dpkg --print-architecture
-#   register: deb_architecture
-
 - name: Add Github GPG key
   become: true
   apt_key:
     url: https://cli.github.com/packages/githubcli-archive-keyring.gpg
     state: present
+    keyring: /etc/apt/trusted.gpg.d/githubcli-archive-keyring.gpg
 
 - name: Add Github apt repository
   become: true

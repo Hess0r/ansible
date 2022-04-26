@@ -3,7 +3,7 @@
   tasks:
     - name: Set roles
       set_fact:
-        roles: "{{ default_roles | difference(exclude_roles | default([])) }}"
+        roles: "{{ default_roles | union(extra_roles | default([])) | difference(exclude_roles | default([])) }}"
 
     - name: Roles to run
       debug: "var=roles"

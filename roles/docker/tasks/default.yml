@@ -4,6 +4,7 @@
   apt_key:
     url: https://download.docker.com/linux/ubuntu/gpg
     state: present
+    keyring: /etc/apt/trusted.gpg.d/docker-archive-keyring.gpg
 
 - name: Add Docker apt repository
   become: true
