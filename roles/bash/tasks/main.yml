@@ -1,5 +1,6 @@
 ---
 - name: Install bash
+  become: true
   ansible.builtin.package:
     name: bash
     state: latest
