@@ -70,6 +70,7 @@ vim.call('plug#begin')
   Plug 'OmniSharp/omnisharp-vim'
   Plug 'liuchengxu/vim-which-key'
   Plug 'windwp/nvim-autopairs'
+  Plug 'luukvbaal/nnn.nvim'
 vim.call('plug#end')
 
 -- COLORS
@@ -111,8 +112,10 @@ vim.api.nvim_set_keymap('n', '<leader>gb', [[<cmd>lua require('telescope.builtin
 
 vim.api.nvim_set_keymap('n', '<leader>ts', [[<cmd>set spell!<CR>]], opts)
 
-vim.api.nvim_set_keymap('n', '<leader>n', [[<cmd>Lexplore %:p:h<CR>]], opts)
-vim.api.nvim_set_keymap('n', '<leader>m', [[<cmd>Lexplore<CR>]], opts)
+vim.api.nvim_set_keymap('n', '<C-A-n>', [[<cmd>NnnExplorer %:p:h<CR>]], opts)
+vim.api.nvim_set_keymap('t', '<C-A-n>', [[<cmd>NnnExplorer %:p:h<CR>]], opts)
+vim.api.nvim_set_keymap('n', '<C-A-p>', [[<cmd>NnnPicker<CR>]], opts)
+vim.api.nvim_set_keymap('t', '<C-A-p>', [[<cmd>NnnPicker<CR>]], opts)
 
 vim.api.nvim_set_keymap('n', '<leader>rr', [[:s/<C-r><C-w>/]], optsNoSilent)
 
@@ -358,3 +361,6 @@ telescope.setup {
 
 -- AUTOPAIRS
 require("nvim-autopairs").setup{}
+
+-- NNN.NVIM
+require("nnn").setup{}
