@@ -210,6 +210,8 @@ nvim_lsp.html.setup(config())
 
 nvim_lsp.prismals.setup(config())
 
+nvim_lsp.phpactor.setup(config())
+
 nvim_lsp.jsonls.setup(config({
   settings = {
     json = {

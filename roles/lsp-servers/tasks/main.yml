@@ -1,5 +1,5 @@
 ---
-# This is not wirking for the first run of the playbook
+# This is not working for the first run of the playbook
 - name: Install lsp packages
   community.general.npm:
     name: "{{ lsp_item }}"
