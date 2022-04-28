@@ -62,6 +62,7 @@ vim.call('plug#begin')
   Plug 'kyazdani42/nvim-web-devicons'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'
+  Plug 'nvim-telescope/telescope-ui-select.nvim'
   Plug 'b0o/schemastore.nvim'
   Plug 'onsails/lspkind-nvim'
   Plug 'sbdchd/neoformat'
@@ -164,7 +165,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>wq', '<cmd>lua require("telescope.builtin").diagnostics()<CR>', opts)
   buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap('n', '<space>ca', '<cmd>lua require("telescope.builtin").lsp_code_actions()<CR>', opts)
+  buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   buf_set_keymap('n', 'gr', '<cmd>lua require("telescope.builtin").lsp_references()<CR>', opts)
   buf_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
   buf_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
@@ -267,6 +268,8 @@ cmp.setup({
       c = cmp.mapping.close(),
     }),
     ['<Tab>'] = cmp.mapping.confirm({ select = true }),
+    ['<C-n>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
+    ['<C-p>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
   },
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
@@ -356,8 +359,15 @@ telescope.setup {
         }
       }
     }
+  },
+  extensions = {
+    ["ui-select"] = {
+      require("telescope.themes").get_dropdown()
+    }
   }
 }
+
+require("telescope").load_extension("ui-select")
 
 -- AUTOPAIRS
 require("nvim-autopairs").setup{}
