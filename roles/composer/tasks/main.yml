@@ -1,0 +1,6 @@
+---
+- name: Install Composer
+  become: true
+  ansible.builtin.package:
+    name: composer
+    state: latest
