@@ -1,0 +1,23 @@
+---
+- name: Clone phpenv
+  ansible.builtin.git:
+    clone: yes
+    depth: 1
+    dest: "{{ ansible_user_dir }}/.phpenv"
+    force: yes
+    repo: git@github.com:phpenv/phpenv.git
+    single_branch: yes
+    update: yes
+    version: "master"
+
+
+- name: Clone php-build plugin
+  ansible.builtin.git:
+    clone: yes
+    depth: 1
+    dest: "{{ ansible_user_dir }}/.phpenv/plugins/php-build"
+    force: yes
+    repo: https://github.com/php-build/php-build.git
+    single_branch: yes
+    update: yes
+    version: "master"
