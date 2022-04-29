@@ -24,6 +24,7 @@ vim.opt.updatetime = 50
 vim.opt.wildignore = vim.o.wildignore .. '*/tmp/*'
 vim.opt.wildignore = vim.o.wildignore .. '*/vendor/*'
 vim.opt.wildignore = vim.o.wildignore .. '*/node_modules/*'
+vim.opt.wildignore = vim.o.wildignore .. '*/.git/*'
 vim.opt.wildmenu = true
 vim.opt.list = true
 -- this makes go really noisy
@@ -200,7 +201,7 @@ nvim_lsp.gopls.setup(config())
 
 nvim_lsp.yamlls.setup(config())
 
-nvim_lsp.intelephense.setup(config())
+-- nvim_lsp.intelephense.setup(config())
 
 nvim_lsp.cssls.setup(config())
 
