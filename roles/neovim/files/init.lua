@@ -121,6 +121,8 @@ vim.api.nvim_set_keymap('t', '<C-A-p>', [[<cmd>NnnPicker<CR>]], opts)
 
 vim.api.nvim_set_keymap('n', '<leader>rr', [[:s/<C-r><C-w>/]], optsNoSilent)
 
+vim.api.nvim_set_keymap('t', '<ESC><ESC>', [[<C-\><C-n>]], opts)
+
 -- TREESITTER
 local nvim_treesitter = require'nvim-treesitter.configs'
 nvim_treesitter.setup {
@@ -377,3 +379,6 @@ require("nvim-autopairs").setup{}
 
 -- NNN.NVIM
 require("nnn").setup{}
+
+-- COMMANDS
+vim.api.nvim_create_user_command('T', 'vsp | terminal <args>', { nargs = "*" })
