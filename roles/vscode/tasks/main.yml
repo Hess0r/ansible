@@ -19,7 +19,7 @@
     state: latest
 
 - name: Install VSCode extensions
-  shell: code --install-extension {{ item }}
+  shell: code --install-extension {{ extension }}
   with_items:
     - dbaeumer.vscode-eslint
     - eamodio.gitlens
@@ -30,12 +30,14 @@
     - ms-vscode-remote.remote-containers
     - PKief.material-icon-theme
     - sleistner.vscode-fileutils
-    - vscodevim.vim
+    # - vscodevim.vim
     - Gruntfuggly.todo-tree
     - zhuangtongfa.material-theme
     - onecentlin.laravel-blade
     - shufo.vscode-blade-formatter
     - bmewburn.vscode-intelephense-client
+  loop_control:
+    loop_var: extension
 
 - name: Copy keybindings
   ansible.builtin.copy:
