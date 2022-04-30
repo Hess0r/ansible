@@ -33,6 +33,9 @@
     - vscodevim.vim
     - Gruntfuggly.todo-tree
     - zhuangtongfa.material-theme
+    - onecentlin.laravel-blade
+    - shufo.vscode-blade-formatter
+    - bmewburn.vscode-intelephense-client
 
 - name: Copy keybindings
   ansible.builtin.copy:
