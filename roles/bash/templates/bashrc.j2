@@ -52,6 +52,7 @@ export GOBIN="$HOME/go/bin"
 export GOPATH="$HOME/go"
 export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
 export PATH=$PATH:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin
+export PATH=$PATH:$HOME/.config/composer/vendor/bin
 
 export STARSHIP_CONFIG="$HOME/.config/starship/config.toml"
 
@@ -117,8 +118,39 @@ alias dclf="docker compose logs -f"
 alias dcpull="docker compose pull"
 alias dcstart="docker compose start"
 alias dck="docker compose kill"
+
+alias artisan='php artisan'
+alias pas='php artisan serve'
+alias pam='php artisan migrate'
+alias pamf='php artisan migrate:fresh'
+alias pamfs='php artisan migrate:fresh --seed'
+alias pamr='php artisan migrate:rollback'
+alias pads='php artisan db:seed'
+alias pamm='php artisan make:model'
+alias pamc='php artisan make:controller'
+alias pams='php artisan make:seeder'
+alias pamt='php artisan make:test'
+alias pamfa='php artisan make:factory'
+alias pamp='php artisan make:policy'
+alias pame='php artisan make:event'
+alias pamj='php artisan make:job'
+alias paml='php artisan make:listener'
+alias pamn='php artisan make:notification'
+alias pampp='php artisan make:provider'
+alias pacac='php artisan cache:clear'
+alias pacoc='php artisan config:clear'
+alias pavic='php artisan view:clear'
+alias paroc='php artisan route:clear'
+alias paqf='php artisan queue:failed'
+alias paqft='php artisan queue:failed-table'
+alias paql='php artisan queue:listen'
+alias paqr='php artisan queue:retry'
+alias paqt='php artisan queue:table'
+alias paqw='php artisan queue:work'
 alias sail='./vendor/bin/sail'
+
 alias dotfiles="cd $DOTFILES"
+
 alias gs='git status'
 alias gco='git checkout'
 alias ga='git add'
