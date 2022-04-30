@@ -36,6 +36,7 @@
     - onecentlin.laravel-blade
     - shufo.vscode-blade-formatter
     - bmewburn.vscode-intelephense-client
+    # - ikappas.phpcs
   loop_control:
     loop_var: extension
 
