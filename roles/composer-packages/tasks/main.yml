@@ -1,0 +1,12 @@
+---
+- name: Install packages
+  community.general.composer:
+    global_command: yes
+    command: require
+    arguments: "{{ composer_package }}"
+  with_items:
+    - "squizlabs/php_codesniffer=*"
+    - laravel/installer
+    - phpstan/phpstan
+  loop_control:
+    loop_var: composer_package
