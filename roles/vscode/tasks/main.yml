@@ -30,7 +30,7 @@
     - ms-vscode-remote.remote-containers
     - PKief.material-icon-theme
     - sleistner.vscode-fileutils
-    # - vscodevim.vim
+    - vscodevim.vim
     - Gruntfuggly.todo-tree
     - zhuangtongfa.material-theme
     - onecentlin.laravel-blade
