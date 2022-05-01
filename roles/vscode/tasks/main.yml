@@ -37,6 +37,7 @@
     - shufo.vscode-blade-formatter
     - bmewburn.vscode-intelephense-client
     # - ikappas.phpcs
+    - bradlc.vscode-tailwindcss
   loop_control:
     loop_var: extension
 
