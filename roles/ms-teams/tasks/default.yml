@@ -1,0 +1,7 @@
+---
+- name: Install Teams
+  community.general.flatpak:
+    name: com.microsoft.Teams
+    remote: flathub
+    state: present
+    method: user

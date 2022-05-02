@@ -1,0 +1,7 @@
+---
+- name: Install Postman
+  community.general.flatpak:
+    name: com.getpostman.Postman
+    remote: flathub
+    state: present
+    method: user
