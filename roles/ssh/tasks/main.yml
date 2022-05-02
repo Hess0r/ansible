@@ -8,3 +8,27 @@
   loop_control:
     loop_var: ssh_key_item
   with_items: "{{ ssh_keys | default({}) | dict2items }}"
+
+- name: Copy main config file
+  become: true
+  ansible.builtin.template:
+    src: config.j2
+    dest: "{{ ansible_user_dir }}/.ssh/config"
+
+- name: Create config.d directory
+  become: true
+  ansible.builtin.file:
+    path: "{{ ansible_user_dir }}/.ssh/config.d"
+    state: directory
+    mode: 0744
+
+- name: Create config files
+  become: true
+  ansible.builtin.template:
+    src: config-entry.j2
+    dest: "{{ ansible_user_dir }}/.ssh/config.d/{{ config_entry.key }}"
+    mode: 0644
+  loop_control:
+    loop_var: config_entry
+  with_items: "{{ ssh_config_list | default({}) | dict2items }}"
+  no_log: true

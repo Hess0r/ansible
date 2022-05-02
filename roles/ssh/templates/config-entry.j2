@@ -1,0 +1,11 @@
+{% for entry in config_entry.value %}
+Host {{ entry.host }}
+  HostName {{ entry.hostname }}
+  User {{ entry.user }}
+{% if 'forwards' in entry %}
+{% for forward in entry.forwards %}
+  LocalForward {{ forward.remote }} {{ forward.local }}
+{% endfor %}
+{% endif %}
+
+{% endfor %}
