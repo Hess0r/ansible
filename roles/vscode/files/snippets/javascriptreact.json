@@ -1,0 +1,48 @@
+{
+  // Place your snippets for javascriptreact here. Each snippet is defined under a snippet name and has a prefix, body and
+  // description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+  // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the
+  // same ids are connected.
+  // Example:
+  // "Print to console": {
+  // 	"prefix": "log",
+  // 	"body": [
+  // 		"console.log('$1');",
+  // 		"$2"
+  // 	],
+  // 	"description": "Log output to console"
+  // }
+  "Functional component": {
+    "prefix": "rfc",
+    "body": [
+      "import React from \"react\";",
+      "",
+      "export default function ${TM_FILENAME_BASE}() {",
+      "\t$0",
+      "\treturn (<>${TM_FILENAME_BASE}</>);",
+      "};",
+      ""
+    ],
+    "description": "Create a functional component. The name of the function defaults to the current filename."
+  },
+  "useEffect skeleton": {
+    "prefix": "rhe",
+    "body": ["React.useEffect(() => {", "\t$0", "}, [$1]);", ""],
+    "description": "Create a useEffect skeleton."
+  },
+  "useState skeleton": {
+    "prefix": "rhs",
+    "body": ["const [$1, $2] = React.useState();"],
+    "description": "Create a useState skeleton."
+  },
+  "useCallback skeleton": {
+    "prefix": "rhc",
+    "body": ["const $1 = React.useCallback(() => {", "\t$0", "}, []);"],
+    "description": "Create a useCallback skeleton."
+  },
+  "useMemo skeleton": {
+    "prefix": "rhm",
+    "body": ["const $1 = React.useMemo(() => {", "\t$0", "}, []);"],
+    "description": "Create a useMemo skeleton."
+  }
+}

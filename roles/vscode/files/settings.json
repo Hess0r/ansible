@@ -5,6 +5,7 @@
   "editor.fontFamily": "'JetBrainsMono Nerd Font Mono', 'Droid Sans Mono', 'monospace', monospace",
   "workbench.startupEditor": "none",
   "workbench.iconTheme": "material-icon-theme",
+  "window.newWindowDimensions": "inherit",
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
