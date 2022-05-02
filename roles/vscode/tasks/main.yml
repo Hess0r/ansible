@@ -38,6 +38,14 @@
     - bmewburn.vscode-intelephense-client
     # - ikappas.phpcs
     - bradlc.vscode-tailwindcss
+    - formulahendry.auto-close-tag
+    - formulahendry.auto-rename-tag
+    - mikestead.dotenv
+    - csstools.postcss
+    - EditorConfig.EditorConfig
+    - redhat.vscode-xml
+    - yzhang.markdown-all-in-one
+
   loop_control:
     loop_var: extension
 
