@@ -87,5 +87,15 @@
         "key": "ctrl+shift+h",
         "command": "workbench.action.terminal.focusNextPane",
         "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
+    },
+    {
+        "key": "ctrl+; r",
+        "command": "workbench.action.openRecent"
+    },
+    {
+        "key": "ctrl+; o",
+        "command": "workbench.action.files.openFolder",
+        "when": "openFolderWorkspaceSupport"
     }
+
 ]
