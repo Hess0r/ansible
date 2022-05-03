@@ -14,6 +14,8 @@
   ansible.builtin.template:
     src: config.j2
     dest: "{{ ansible_user_dir }}/.ssh/config"
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_gid }}"
 
 - name: Create config.d directory
   become: true
@@ -21,6 +23,8 @@
     path: "{{ ansible_user_dir }}/.ssh/config.d"
     state: directory
     mode: 0744
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_gid }}"
 
 - name: Create config files
   become: true
@@ -28,6 +32,8 @@
     src: config-entry.j2
     dest: "{{ ansible_user_dir }}/.ssh/config.d/{{ config_entry.key }}"
     mode: 0644
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_gid }}"
   loop_control:
     loop_var: config_entry
   with_items: "{{ ssh_config_list | default({}) | dict2items }}"

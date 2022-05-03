@@ -17,4 +17,5 @@
       - gnupg
       - apt-transport-https
       - ca-certificates
+      - xclip
     state: latest

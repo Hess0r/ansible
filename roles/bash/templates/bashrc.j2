@@ -231,3 +231,14 @@ n() {
       rm -f "$NNN_TMPFILE" > /dev/null
     fi
 }
+
+chphp() {
+  local phpfile=/usr/bin/php$1
+  if [ -f "$phpfile" ]; then
+    sudo update-alternatives --set php /usr/bin/php$1
+    return 0;
+  else
+    echo "File: $phpfile does not exist!"
+    return 1;
+  fi
+}
