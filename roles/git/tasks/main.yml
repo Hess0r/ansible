@@ -16,3 +16,9 @@
     name: user.email
     scope: global
     value: "{{ git_user_email }}"
+
+- name: Set detaul branch name
+  community.general.git_config:
+    name: init.defaultBranch
+    scope: global
+    value: main
