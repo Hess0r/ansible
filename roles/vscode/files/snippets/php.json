@@ -1,0 +1,34 @@
+{
+	"Create new php class": {
+		"prefix": "cl",
+		"body": [
+			"class ${TM_FILENAME_BASE}$1",
+			"{",
+			"\tpublic function __construct($2)",
+			"\t{",
+			"\t\t${3:// code}",
+			"\t}",
+			"",
+			"\t$0",
+			"}"
+		],
+		"description": "Create new php class"
+	},
+	"Create new php interface": {
+		"prefix": "in",
+		"body": [
+			"interface ${TM_FILENAME_BASE}",
+			"{",
+			"\t$0",
+			"}"
+		],
+		"description": "Create new php interface"
+	},
+	"Create new interface function": {
+		"prefix": "inf",
+		"body": [
+			"public function ${1:funcName}(${2}): ${3:void};"
+		],
+		"description": "Create new php interface function"	
+	}
+}
