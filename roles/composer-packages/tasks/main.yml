@@ -8,5 +8,6 @@
     - "squizlabs/php_codesniffer=*"
     - laravel/installer
     - phpstan/phpstan
+    - friendsofphp/php-cs-fixer
   loop_control:
     loop_var: composer_package

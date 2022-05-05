@@ -34,9 +34,11 @@
     - zhuangtongfa.material-theme
     - onecentlin.laravel-blade
     - shufo.vscode-blade-formatter
-    - bmewburn.vscode-intelephense-client
+    - zobo.php-intellisense
     - neilbrayfield.php-docblocker 
     - MehediDracula.php-namespace-resolver
+    - ikappas.phpcs
+    - junstyle.php-cs-fixer
     - bradlc.vscode-tailwindcss
     - formulahendry.auto-close-tag
     - formulahendry.auto-rename-tag
