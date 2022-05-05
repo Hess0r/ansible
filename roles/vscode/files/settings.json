@@ -36,6 +36,9 @@
   "[php]": {
     "editor.defaultFormatter": "junstyle.php-cs-fixer"
   },
+  "[blade]": {
+    "editor.defaultFormatter": "shufo.vscode-blade-formatter"
+  },
   "blade.format.enable": true,
   "eslint.validate": ["typescript", "typescriptreact"],
   "files.exclude": {
