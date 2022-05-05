@@ -19,4 +19,6 @@
       - php-mbstring
       - php-opcache
       - php-xml
+      - php-mysql
+      - php-xdebug
     state: latest

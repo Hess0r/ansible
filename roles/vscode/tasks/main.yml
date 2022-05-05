@@ -48,6 +48,8 @@
     - redhat.vscode-xml
     - yzhang.markdown-all-in-one
     - streetsidesoftware.code-spell-checker
+    - christian-kohler.path-intellisense
+    - xdebug.php-debug
 
   loop_control:
     loop_var: extension
