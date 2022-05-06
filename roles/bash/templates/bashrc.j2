@@ -121,6 +121,7 @@ alias dck="docker compose kill"
 
 alias artisan='php artisan'
 alias pas='php artisan serve'
+alias pasd='XDEBUG_SESSION=1 php artisan serve'
 alias pam='php artisan migrate'
 alias pamf='php artisan migrate:fresh'
 alias pamfs='php artisan migrate:fresh --seed'
@@ -241,12 +242,4 @@ chphp() {
     echo "File: $phpfile does not exist!"
     return 1;
   fi
-}
-
-xdoff() {
-  sudo phpdismod xdebug
-}
-
-xdon() {
-  sudo phpenmod xdebug
 }
