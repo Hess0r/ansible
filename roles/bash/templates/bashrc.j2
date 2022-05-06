@@ -242,3 +242,11 @@ chphp() {
     return 1;
   fi
 }
+
+xdoff() {
+  sudo phpdismod xdebug
+}
+
+xdon() {
+  sudo phpenmod xdebug
+}
