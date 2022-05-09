@@ -34,7 +34,7 @@
     - zhuangtongfa.material-theme
     - onecentlin.laravel-blade
     - shufo.vscode-blade-formatter
-    - zobo.php-intellisense
+    - bmewburn.vscode-intelephense-client
     - neilbrayfield.php-docblocker 
     - MehediDracula.php-namespace-resolver
     - ikappas.phpcs
