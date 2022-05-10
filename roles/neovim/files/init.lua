@@ -73,6 +73,7 @@ vim.call('plug#begin')
   Plug 'liuchengxu/vim-which-key'
   Plug 'windwp/nvim-autopairs'
   Plug 'luukvbaal/nnn.nvim'
+  Plug('phpactor/phpactor', {['for'] = 'php', ['tag'] = '*', ['do'] = 'composer install --no-dev -o'})
 vim.call('plug#end')
 
 -- COLORS
