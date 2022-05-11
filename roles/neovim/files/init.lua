@@ -74,6 +74,7 @@ vim.call('plug#begin')
   Plug 'windwp/nvim-autopairs'
   Plug 'luukvbaal/nnn.nvim'
   Plug('phpactor/phpactor', {['for'] = 'php', ['tag'] = '*', ['do'] = 'composer install --no-dev -o'})
+  Plug 'jwalton512/vim-blade'
 vim.call('plug#end')
 
 -- COLORS
@@ -119,6 +120,8 @@ vim.api.nvim_set_keymap('n', '<C-A-n>', [[<cmd>NnnExplorer %:p:h<CR>]], opts)
 vim.api.nvim_set_keymap('t', '<C-A-n>', [[<cmd>NnnExplorer %:p:h<CR>]], opts)
 vim.api.nvim_set_keymap('n', '<C-A-p>', [[<cmd>NnnPicker<CR>]], opts)
 vim.api.nvim_set_keymap('t', '<C-A-p>', [[<cmd>NnnPicker<CR>]], opts)
+
+vim.api.nvim_set_keymap('n', '<leader>n', [[<cmd>NnnPicker<CR>]], opts)
 
 vim.api.nvim_set_keymap('n', '<leader>rr', [[:s/<C-r><C-w>/]], optsNoSilent)
 
