@@ -92,7 +92,7 @@ local opts = { noremap = true, silent = true }
 local optsNoSilent = { noremap = true, silent = false }
 
 vim.api.nvim_set_keymap('n', '<leader>ve', [[<cmd>e $MYVIMRC<CR>]], opts)
-vim.api.nvim_set_keymap('n', '<leader>vt', [[<cmd>e "$HOME/.tmux.conf"<CR>]], opts)
+vim.api.nvim_set_keymap('n', '<leader>vt', [[<cmd>e $HOME/.tmux.conf<CR>]], opts)
 vim.api.nvim_set_keymap('n', '<leader><CR>', [[<cmd>source $MYVIMRC<CR>]], opts)
 vim.api.nvim_set_keymap('n', '<leader>', [[<cmd>WhichKey '<Space>'<CR>]], opts)
 vim.api.nvim_set_keymap('v', '<leader>', [[<cmd>WhichKeyVisual '<Space>'<CR>]], opts)
