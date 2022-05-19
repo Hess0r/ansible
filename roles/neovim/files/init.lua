@@ -114,6 +114,7 @@ vim.api.nvim_set_keymap('n', '<leader>gs', [[<cmd>lua require('telescope.builtin
 vim.api.nvim_set_keymap('n', '<leader>gc', [[<cmd>lua require('telescope.builtin').git_commits()<CR>]], opts)
 vim.api.nvim_set_keymap('n', '<leader>gd', [[<cmd>lua require('telescope.builtin').git_bcommits()<CR>]], opts)
 vim.api.nvim_set_keymap('n', '<leader>gb', [[<cmd>lua require('telescope.builtin').git_branches()<CR>]], opts)
+vim.api.nvim_set_keymap('n', '<leader>gp', [[<cmd>Gdiffsplit<CR>]], opts)
 
 vim.api.nvim_set_keymap('n', '<leader>ts', [[<cmd>set spell!<CR>]], opts)
 
