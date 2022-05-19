@@ -77,6 +77,9 @@ vim.call('plug#begin')
   Plug 'jwalton512/vim-blade'
   Plug 'gpanders/editorconfig.nvim'
   Plug 'liuchengxu/graphviz.vim'
+  Plug('iamcco/markdown-preview.nvim', {
+    ['do'] = function() vim.call('mkdp#util#install') end,
+  })
 vim.call('plug#end')
 
 -- COLORS
