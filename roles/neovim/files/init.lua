@@ -76,6 +76,7 @@ vim.call('plug#begin')
   Plug('phpactor/phpactor', {['for'] = 'php', ['tag'] = '*', ['do'] = 'composer install --no-dev -o'})
   Plug 'jwalton512/vim-blade'
   Plug 'gpanders/editorconfig.nvim'
+  Plug 'liuchengxu/graphviz.vim'
 vim.call('plug#end')
 
 -- COLORS
