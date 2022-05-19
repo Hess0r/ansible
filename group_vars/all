@@ -11,7 +11,9 @@ default_roles:
   - fd
   - ripgrep
   - pandoc
+  - graphviz
   - nnn
+  - lynx
   - gh
   - neovim
   - nvm

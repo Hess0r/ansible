@@ -1,0 +1,6 @@
+---
+- name: Install graphviz
+  become: true
+  ansible.builtin.package:
+    name: graphviz
+    state: latest
