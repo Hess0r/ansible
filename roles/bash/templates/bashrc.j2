@@ -94,7 +94,6 @@ if type nvim &>/dev/null; then
   alias v='vim'
 fi
 
-# alias n="nnn -de"
 alias nn="n -Hde"
 
 alias lg="lazygit"
@@ -223,7 +222,9 @@ n() {
       return
     fi
 
-    export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+    # Use export to ALWAYS cd on quit, otherwise its goind to cd on ^G
+    NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+    # export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
 
     nnn "$@"
 
