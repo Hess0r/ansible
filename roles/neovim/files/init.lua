@@ -80,6 +80,7 @@ vim.call('plug#begin')
   Plug('iamcco/markdown-preview.nvim', {
     ['do'] = function() vim.call('mkdp#util#install') end,
   })
+  Plug 'stephpy/vim-php-cs-fixer'
 vim.call('plug#end')
 
 -- COLORS
@@ -119,6 +120,10 @@ vim.api.nvim_set_keymap('n', '<leader>gc', [[<cmd>lua require('telescope.builtin
 vim.api.nvim_set_keymap('n', '<leader>gd', [[<cmd>lua require('telescope.builtin').git_bcommits()<CR>]], opts)
 vim.api.nvim_set_keymap('n', '<leader>gb', [[<cmd>lua require('telescope.builtin').git_branches()<CR>]], opts)
 vim.api.nvim_set_keymap('n', '<leader>gp', [[<cmd>Gdiffsplit<CR>]], opts)
+
+vim.api.nvim_set_keymap('n', '<leader>mp', [[<Plug>MarkdownPreview<CR>]], opts)
+vim.api.nvim_set_keymap('n', '<leader>ms', [[<Plug>MarkdownPreviewStop<CR>]], opts)
+vim.api.nvim_set_keymap('n', '<leader>mt', [[<Plug>MarkdownPreviewToggle<CR>]], opts)
 
 vim.api.nvim_set_keymap('n', '<leader>ts', [[<cmd>set spell!<CR>]], opts)
 
@@ -394,3 +399,6 @@ require("nnn").setup{}
 
 -- COMMANDS
 vim.api.nvim_create_user_command('T', 'vsp | terminal <args>', { nargs = "*" })
+
+--- PHP-CS-FIXER
+vim.g.php_cs_fixer_rules = "@PSR12"

@@ -10,6 +10,7 @@
     update: yes
     version: "master"
   register: clone
+  diff: false
 
 - name: Install
   community.general.composer:

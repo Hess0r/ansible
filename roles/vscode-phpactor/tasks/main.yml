@@ -1,0 +1,31 @@
+---
+- name: Clone phpactor repository
+  ansible.builtin.git:
+    clone: yes
+    depth: 1
+    dest: "{{ ansible_user_dir }}/Repos/vscode-phpactor"
+    force: yes
+    repo: https://github.com/phpactor/vscode-phpactor
+    single_branch: yes
+    update: yes
+    version: master
+  register: clone
+
+- name: Install dependencies
+  community.general.npm:
+    path: "{{ ansible_user_dir }}/Repos/vscode-phpactor"
+  when: clone.changed
+
+- name: Build
+  shell:
+    chdir: "{{ ansible_user_dir }}/Repos/vscode-phpactor"
+    cmd: npm run build
+  when: clone.changed
+
+- name: Link to extensions directory
+  file:
+    src: "{{ ansible_user_dir }}/Repos/vscode-phpactor"
+    dest: "{{ ansible_user_dir }}/.vscode/extensions/vscode-phpactor"
+    state: link
+
+
