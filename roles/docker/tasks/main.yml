@@ -8,6 +8,7 @@
   loop_control:
     loop_var: found_file
 
+# There is an official apt package for docker-compose-plugin
 - name: Create Docker plugin directory
   file:
     path: "{{ ansible_user_dir }}/.docker/cli-plugins"
