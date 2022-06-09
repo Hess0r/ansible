@@ -8,18 +8,6 @@
   loop_control:
     loop_var: found_file
 
-# There is an official apt package for docker-compose-plugin
-- name: Create Docker plugin directory
-  file:
-    path: "{{ ansible_user_dir }}/.docker/cli-plugins"
-    state: directory
-
-- name: Install Docker Compose V2
-  get_url:
-    url: https://github.com/docker/compose/releases/download/v2.0.1/docker-compose-linux-x86_64
-    dest: "{{ ansible_user_dir }}/.docker/cli-plugins/docker-compose"
-    mode: "+x"
-
 - name: Add user to docker group
   become: true
   ansible.builtin.user:

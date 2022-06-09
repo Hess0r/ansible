@@ -6,6 +6,7 @@
     state: present
     keyring: /etc/apt/trusted.gpg.d/microsoft.gpg
 
+
 - name: Add apt repository
   become: true
   apt_repository:
@@ -51,6 +52,7 @@
     - christian-kohler.path-intellisense
     - xdebug.php-debug
     - vscodevim.vim
+    - redhat.ansible
 
   loop_control:
     loop_var: extension

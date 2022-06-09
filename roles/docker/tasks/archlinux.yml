@@ -2,5 +2,7 @@
 - name: Install Docker
   become: true
   ansible.builtin.package:
-    name: docker
+    name: 
+      - docker
+      - docker-compose
     state: latest
