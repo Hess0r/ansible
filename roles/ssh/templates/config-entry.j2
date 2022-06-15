@@ -1,4 +1,4 @@
-{% for entry in config_entry.value %}
+{% for entry in config_entry.value.hosts %}
 Host {{ entry.host }}
   HostName {{ entry.hostname }}
   User {{ entry.user }}
@@ -9,3 +9,12 @@ Host {{ entry.host }}
 {% endif %}
 
 {% endfor %}
+
+{% if 'matches' in config_entry.value %}
+{% for match in config_entry.value.matches %}
+Match {{ match.match }} {{ match.value }}
+{% for attribute in match.attributes %}
+  {{ attribute.name }} {{ attribute.value }}
+{% endfor %}
+{% endfor %}
+{% endif %}

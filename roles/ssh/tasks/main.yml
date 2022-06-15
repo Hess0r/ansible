@@ -38,3 +38,4 @@
     loop_var: config_entry
   with_items: "{{ ssh_config_list | default({}) | dict2items }}"
   no_log: true
+
