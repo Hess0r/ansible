@@ -244,3 +244,29 @@ chphp() {
     return 1;
   fi
 }
+
+frepo() {
+  directory=$(fd . ~/Repos -t d -d 1 | fzf)
+
+  if [[ -z $directory ]]; then
+    exit 0
+  fi
+
+  session_name=$(basename "$directory")
+  tmux_running=$(pgrep tmux)
+
+  if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+    tmux new-session -s $session_name -c $directory
+    exit 0
+  fi
+
+  if ! tmux has-session -t=$session_name 2> /dev/null; then
+    tmux new-session -ds $session_name -c $directory
+  fi
+
+  if [[ -z $TMUX ]]; then
+    tmux attach-session -t $session_name
+  else
+    tmux switch-client -t $session_name
+  fi
+}
