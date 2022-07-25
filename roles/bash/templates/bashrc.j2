@@ -247,7 +247,7 @@ chphp() {
 }
 
 frepo() {
-  directory=$(fd . ~/Repos -t d -d 1 | fzf)
+  directory=$(fd . ~/Repos ~/Work/Repos -t d -d 1 | fzf)
 
   if [[ -z $directory ]]; then
     exit 0

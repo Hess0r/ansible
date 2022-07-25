@@ -73,7 +73,7 @@ vim.call('plug#begin')
   Plug 'liuchengxu/vim-which-key'
   Plug 'windwp/nvim-autopairs'
   Plug 'luukvbaal/nnn.nvim'
-  Plug('phpactor/phpactor', {['for'] = 'php', ['tag'] = '*', ['do'] = 'composer install --no-dev -o'})
+  -- Plug('phpactor/phpactor', {['for'] = 'php', ['tag'] = '*', ['do'] = 'composer install --no-dev -o'})
   Plug 'jwalton512/vim-blade'
   Plug 'gpanders/editorconfig.nvim'
   Plug 'liuchengxu/graphviz.vim'
@@ -228,7 +228,12 @@ nvim_lsp.html.setup(config())
 
 nvim_lsp.prismals.setup(config())
 
-nvim_lsp.phpactor.setup(config())
+nvim_lsp.phpactor.setup(config({
+  init_options = {
+    ["language_server_phpstan.enabled"] = false,
+    ["language_server_psalm.enabled"] = false,
+  }
+}))
 
 nvim_lsp.tailwindcss.setup(config())
 
