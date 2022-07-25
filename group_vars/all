@@ -31,4 +31,6 @@ default_roles:
   - postman
   - spotify
   - dbeaver
-  - ms-teams
+  - thunderbird
+  # This might be more of an extra_roles candidate
+  #- ms-teams

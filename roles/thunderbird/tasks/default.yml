@@ -1,0 +1,8 @@
+---
+- name: Install Thunderbird
+  community.general.flatpak:
+    name: org.mozilla.Thunderbird
+    remote: flathub
+    state: present
+    method: user
+
