@@ -54,6 +54,7 @@
     - vscodevim.vim
     - redhat.ansible
     - amiralizadeh9480.laravel-extra-intellisense
+    - Prisma.prisma
 
   loop_control:
     loop_var: extension
