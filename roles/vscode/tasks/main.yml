@@ -53,6 +53,7 @@
     - xdebug.php-debug
     - vscodevim.vim
     - redhat.ansible
+    - amiralizadeh9480.laravel-extra-intellisense
 
   loop_control:
     loop_var: extension

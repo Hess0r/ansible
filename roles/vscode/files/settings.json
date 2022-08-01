@@ -34,7 +34,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[php]": {
-    "editor.defaultFormatter": "junstyle.php-cs-fixer"
+    "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
   },
   "[blade]": {
     "editor.defaultFormatter": "shufo.vscode-blade-formatter"
@@ -71,7 +71,6 @@
   "editor.gotoLocation.multipleDeclarations": "goto",
   "editor.gotoLocation.multipleImplementations": "goto",
   "editor.gotoLocation.multipleTypeDefinitions": "goto",
-  "redhat.telemetry.enabled": false,
   // vim stuff
   "vim.easymotion": true,
   "vim.incsearch": true,
@@ -141,5 +140,16 @@
   "vim.handleKeys": {
     "<C-a>": false,
     "<C-f>": false
-  }
+  },
+  "diffEditor.ignoreTrimWhitespace": false,
+  "todo-tree.general.tags": [
+    "BUG",
+    "HACK",
+    "FIXME",
+    "TODO",
+    "XXX",
+    "[ ]",
+    "[x]",
+    "FEATURE"
+  ]
 }
