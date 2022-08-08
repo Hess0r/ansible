@@ -1,0 +1,29 @@
+---
+- name: Add ppa
+  become: true
+  apt_repository:
+    repo: ppa:ondrej/php
+    state: present
+    update_cache: true
+
+- name: Install php
+  become: true
+  apt:
+    name:
+      - "php{{ php_version }}"
+      - "php{{ php_version }}-fileinfo"
+      - "php{{ php_version }}-mbstring"
+      - "php{{ php_version }}-cli"
+      - "php{{ php_version }}-common"
+      - "php{{ php_version }}-dom"
+      - "php{{ php_version }}-curl"
+      - "php{{ php_version }}-gd"
+      - "php{{ php_version }}-mbstring"
+      - "php{{ php_version }}-opcache"
+      - "php{{ php_version }}-xml"
+      - "php{{ php_version }}-mysql"
+      - "php{{ php_version }}-xdebug"
+    state: latest
+  loop_control:
+    loop_var: php_version
+  with_items: "{{ php_versions | default([])}}"

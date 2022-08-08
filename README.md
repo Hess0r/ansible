@@ -53,6 +53,7 @@ Currently the following variables are supported:
 - node_version (string)
 - ssh_keys (dictionary, each pair of the key should be an entry)
 - go_version (string: '1.18', '1.17.8', '1.16.15')
+- php_versions (array)
 
 ## Testing
 

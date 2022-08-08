@@ -32,5 +32,4 @@ default_roles:
   - spotify
   - dbeaver
   - thunderbird
-  # This might be more of an extra_roles candidate
-  #- ms-teams
+  - ms-teams

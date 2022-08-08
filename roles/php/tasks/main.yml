@@ -1,24 +1,9 @@
 ---
-- name: Install PHP
-  become: true
-  ansible.builtin.package:
-    name: php
-    state: latest
-
-- name: Install PHP extensions
-  become: true
-  ansible.builtin.package:
-    name: 
-      - php-fileinfo
-      - php-mbstring
-      - php-cli
-      - php-common
-      - php-dom
-      - php-curl
-      - php-gd
-      - php-mbstring
-      - php-opcache
-      - php-xml
-      - php-mysql
-      - php-xdebug
-    state: latest
+- name: Include task based on Linux distribution
+  include_tasks: "{{ found_file }}"
+  with_first_found:
+    - files:
+      - "{{ ansible_distribution | lower }}.yml"
+      - default.yml
+  loop_control:
+    loop_var: found_file
