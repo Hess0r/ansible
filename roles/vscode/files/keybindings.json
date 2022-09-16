@@ -65,6 +65,11 @@
         "when": "viewContainer.workbench.view.explorer.enabled"
     },
     {
+        "key": "ctrl+shift+t",
+        "command": "workbench.view.extension.todo-tree-container",
+        "when": "viewContainer.workbench.view.explorer.enabled"
+    },
+    {
         "key": "alt+b",
         "command": "workbench.action.toggleSidebarVisibility"
     },
@@ -97,5 +102,4 @@
         "command": "workbench.action.files.openFolder",
         "when": "openFolderWorkspaceSupport"
     }
-
 ]
