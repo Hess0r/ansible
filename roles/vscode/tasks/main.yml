@@ -55,6 +55,7 @@
     - redhat.ansible
     - amiralizadeh9480.laravel-extra-intellisense
     - Prisma.prisma
+    - tabeyti.jenkins-jack
 
   loop_control:
     loop_var: extension
