@@ -144,6 +144,9 @@ nvim_treesitter.setup {
   highlight = {
     enable = true,
   },
+  indent = {
+    enable = true,
+  },
   context_commentstring = {
     enable = true,
     enable_autocmd = false,
@@ -408,5 +411,3 @@ vim.api.nvim_create_user_command('T', 'vsp | terminal <args>', { nargs = "*" })
 
 --- PHP-CS-FIXER
 vim.g.php_cs_fixer_rules = "@PSR12"
-
--- we need a way to set 'syntax enable'
