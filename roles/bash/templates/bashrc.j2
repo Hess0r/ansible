@@ -251,8 +251,18 @@ chphp() {
   fi
 }
 
+fcd() {
+  directory=$(fd . ~/Repos ~/Repos/Parked -t d -d 1 | fzf)
+
+  if [[ -z $directory ]]; then
+    exit 0
+  fi
+
+  cd $directory
+}
+
 frepo() {
-  directory=$(fd . ~/Repos ~/Work/Repos -t d -d 1 | fzf)
+  directory=$(fd . ~/Repos ~/Work/Repos -t d -d 1 -E Parked | fzf)
 
   if [[ -z $directory ]]; then
     exit 0
