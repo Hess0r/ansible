@@ -9,5 +9,6 @@
     - laravel/installer
     - phpstan/phpstan
     - friendsofphp/php-cs-fixer
+    - cpriego/valet-linux
   loop_control:
     loop_var: composer_package

@@ -189,6 +189,10 @@ fi
 if type packer &>/dev/null; then
   complete -C "$(which packer)" packer
 fi
+# not working
+if type valet &>/dev/null; then
+  source <(valet completion bash)
+fi
 
 [ -f "`which starship`" ] && eval "$(starship init bash)"
 [ -f /usr/share/doc/fzf/examples/completion.bash ] && source /usr/share/doc/fzf/examples/completion.bash
