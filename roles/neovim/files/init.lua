@@ -409,5 +409,9 @@ require("nnn").setup{}
 -- COMMANDS
 vim.api.nvim_create_user_command('T', 'vsp | terminal <args>', { nargs = "*" })
 
---- PHP-CS-FIXER
+-- PHP-CS-FIXER
 vim.g.php_cs_fixer_rules = "@PSR12"
+
+-- NEOFORMAT
+vim.g.neoformat_php_laravelpint = { ['exe'] = './vendor/bin/pint', ['replace'] = 1 }
+vim.g.neoformat_enabled_php = {'laravelpint', 'phpcsfixer'}
