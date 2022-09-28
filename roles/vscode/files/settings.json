@@ -65,7 +65,6 @@
   "php-cs-fixer.formatHtml": false,
   "php-cs-fixer.documentFormattingProvider": true,
   "phpcs.standard": "PSR12",
-  "editor.snippetSuggestions": "top",
   "editor.gotoLocation.multipleReferences": "goto",
   "editor.gotoLocation.multipleDefinitions": "goto",
   "editor.gotoLocation.multipleDeclarations": "goto",
