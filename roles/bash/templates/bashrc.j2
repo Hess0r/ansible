@@ -189,15 +189,16 @@ fi
 if type packer &>/dev/null; then
   complete -C "$(which packer)" packer
 fi
-# not working
-if type valet &>/dev/null; then
-  source <(valet completion bash)
-fi
 
 [ -f "`which starship`" ] && eval "$(starship init bash)"
 [ -f /usr/share/doc/fzf/examples/completion.bash ] && source /usr/share/doc/fzf/examples/completion.bash
 [ -f /usr/share/doc/fzf/examples/key-bindings.bash ] && source /usr/share/doc/fzf/examples/key-bindings.bash
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+# ==========================================================
+
+# GHCUP (HASKELL)
+# ==========================================================
+[ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env"
 # ==========================================================
 
 # FUNCTIONS
