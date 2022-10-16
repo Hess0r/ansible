@@ -48,6 +48,7 @@ Currently the following variables are supported:
 - git_user_name (string, required)
 - git_user_email (string, required)
 - user_shell (string: 'bash', 'zsh'; if not specified 'bash' is used)
+- extra_roles (array)
 - exclude_roles (array)
 - neovim_version (string, branch, or tag name)
 - node_version (string)
