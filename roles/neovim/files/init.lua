@@ -73,7 +73,7 @@ vim.call('plug#begin')
   Plug 'liuchengxu/vim-which-key'
   Plug 'windwp/nvim-autopairs'
   Plug 'luukvbaal/nnn.nvim'
-  -- Plug('phpactor/phpactor', {['for'] = 'php', ['tag'] = '*', ['do'] = 'composer install --no-dev -o'})
+  Plug('phpactor/phpactor', {['for'] = 'php', ['tag'] = '*', ['do'] = 'composer install --no-dev -o'})
   Plug 'jwalton512/vim-blade'
   Plug 'gpanders/editorconfig.nvim'
   Plug 'liuchengxu/graphviz.vim'
@@ -199,7 +199,7 @@ local sumneko_root_path = vim.fn.stdpath'data' .. "/site/lua-language-server"
 
 local sumneko_binary = sumneko_root_path .. "/bin/lua-language-server"
 
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local function config(_config)
   return vim.tbl_deep_extend("force", {
@@ -231,9 +231,11 @@ nvim_lsp.html.setup(config())
 
 nvim_lsp.prismals.setup(config())
 
+nvim_lsp.hls.setup(config())
+
 nvim_lsp.phpactor.setup(config({
   init_options = {
-    ["language_server_phpstan.enabled"] = false,
+    ["language_server_phpstan.enabled"] = true,
     ["language_server_psalm.enabled"] = false,
   }
 }))
